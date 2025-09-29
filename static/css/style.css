@@ -1,0 +1,112 @@
+body {
+  margin: 0;
+  font-family: "Segoe UI", Arial, sans-serif;
+  background: #f9f9f9;
+  color: #333;
+}
+
+header {
+  background: #1a1c23;
+  padding: 15px 30px;
+  text-align: center;
+  color: #fff;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.container {
+  max-width: 700px;
+  margin: 60px auto;
+  text-align: center;
+  padding: 20px;
+}
+
+h1 {
+  margin-bottom: 25px;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.input-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  padding: 10px;
+  gap: 10px;
+}
+
+input {
+  flex: 1;
+  border: none;
+  outline: none;
+  font-size: 16px;
+  padding: 12px;
+  border-radius: 8px;
+  background: #f0f0f0;
+}
+
+button {
+  border: none;
+  padding: 12px 18px;
+  border-radius: 8px;
+  font-size: 15px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+#pasteBtn {
+  background: #444;
+  color: #fff;
+}
+
+#pasteBtn:hover {
+  background: #333;
+}
+
+#downloadBtn {
+  background: #007bff;
+  color: #fff;
+  font-weight: bold;
+}
+
+#downloadBtn:hover {
+  background: #0056b3;
+}
+
+#status {
+  margin-top: 25px;
+  font-size: 16px;
+}
+
+.download-options {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.download-options a {
+  display: block;
+  padding: 15px;
+  border-radius: 8px;
+  background: #007bff;
+  color: #fff;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 500;
+  transition: background 0.3s;
+}
+
+.download-options a:hover {
+  background: #0056b3;
+}
+
+footer {
+  margin-top: 50px;
+  text-align: center;
+  font-size: 14px;
+  color: #777;
+}

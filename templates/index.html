@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>X Video Downloader</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+  <header>
+    <div class="logo">X DOWNLOADER</div>
+  </header>
+
+  <main class="container">
+    <h1>X Video Downloader</h1>
+    <div class="input-box">
+      <input type="text" id="urlInput" placeholder="Insert link">
+      <button id="pasteBtn">📋 Paste</button>
+      <button id="downloadBtn" onclick="download()">Download</button>
+    </div>
+    <div id="status"></div>
+  </main>
+
+  <footer>
+    <p>⚡ Fast • Free • No Watermark</p>
+  </footer>
+
+  <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>

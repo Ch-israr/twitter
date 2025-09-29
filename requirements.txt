@@ -1,2 +1,6 @@
-flask
+Flask
 yt-dlp
+TikTokApi
+requests
+beautifulsoup4
+gunicorn

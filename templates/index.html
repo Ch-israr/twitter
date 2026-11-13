@@ -5,6 +5,44 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="TwitterDown — download videos from Twitter / X as MP4. Fast, free, no watermark, no sign-up. Paste an X link and download.">
   <link rel="icon" type="image/svg+xml" href="/static/favicon.svg">
+  <link rel="canonical" href="https://twitter-7vlf.onrender.com/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="TwitterDown">
+  <meta property="og:title" content="TwitterDown — Twitter / X Video Downloader">
+  <meta property="og:description" content="Download videos and GIFs from X (Twitter) as MP4. Fast, free, no watermark, no sign-up. Paste an X link and download.">
+  <meta property="og:url" content="https://twitter-7vlf.onrender.com/">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="TwitterDown — Twitter / X Video Downloader">
+  <meta name="twitter:description" content="Download videos and GIFs from X (Twitter) as MP4. Fast, free, no watermark, no sign-up. Paste an X link and download.">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebApplication",
+        "name": "TwitterDown",
+        "alternateName": "Twitter / X Video Downloader",
+        "url": "https://twitter-7vlf.onrender.com/",
+        "applicationCategory": "MultimediaApplication",
+        "operatingSystem": "Any",
+        "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"},
+        "description": "Download videos and GIFs from X (Twitter) as MP4. Fast, free, no watermark, no sign-up. X videos only."
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {"@type": "Question", "name": "Is TwitterDown free?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. TwitterDown is free to use, with no sign-up and no account needed."}},
+          {"@type": "Question", "name": "Do I need an X / Twitter account?", "acceptedAnswer": {"@type": "Answer", "text": "No. You only need the link to a public post that contains a video."}},
+          {"@type": "Question", "name": "What quality will the video be?", "acceptedAnswer": {"@type": "Answer", "text": "You get up to three qualities to choose from — for example 320p, 480p and 720p — depending on the original post. Pick the one that suits you."}},
+          {"@type": "Question", "name": "Can I download GIFs too?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. On X, GIFs are short videos, so they download as MP4 just like videos."}},
+          {"@type": "Question", "name": "Does TwitterDown work with TikTok, YouTube, or Instagram?", "acceptedAnswer": {"@type": "Answer", "text": "No. TwitterDown is for X only — x.com and twitter.com video links only."}},
+          {"@type": "Question", "name": "Can I download videos from private posts?", "acceptedAnswer": {"@type": "Answer", "text": "No. TwitterDown only works with public posts that anyone can view."}},
+          {"@type": "Question", "name": "Is it safe and legal to download videos?", "acceptedAnswer": {"@type": "Answer", "text": "Only download videos you have the right to use, and respect the original creator’s rights. TwitterDown is not affiliated with X Corp. or Twitter, Inc."}}
+        ]
+      }
+    ]
+  }
+  </script>
   <title>TwitterDown — Twitter / X Video Downloader</title>
   <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
@@ -13,6 +51,7 @@
     <div class="header-inner">
       <a class="logo" href="/">⬇ TwitterDown</a>
       <nav class="main-nav">
+        <a href="#about">About</a>
         <a href="#how-it-works">How it works</a>
         <a href="#features">Features</a>
         <a href="#faq">FAQ</a>
@@ -32,6 +71,14 @@
         </div>
         <p class="hint">Works with x.com and twitter.com links. No account needed.</p>
         <div id="status" role="status"></div>
+      </div>
+    </section>
+
+    <section id="about" class="section section-alt">
+      <div class="container container-narrow">
+        <h2>What is TwitterDown?</h2>
+        <p>TwitterDown is a free online tool for downloading videos and GIFs from X (Twitter) as MP4 files. Paste the link to a public post, choose a quality, and save the video to your phone or computer — no account, no app, and no watermark.</p>
+        <p>TwitterDown works with x.com and twitter.com links only. It does not work with TikTok, YouTube, or Instagram, and it only works with public posts.</p>
       </div>
     </section>
 

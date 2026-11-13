@@ -108,6 +108,22 @@ def download_file_fallback(url):
     return filename
 
 
+@app.errorhandler(404)
+def page_not_found(e):
+    """Friendly branded 404 page, in the visitor's language when the
+    bad URL starts with a language code (e.g. /es/nope).
+
+    Still returns HTTP 404 so search engines don't index bad URLs.
+    """
+    lang = "en"
+    parts = request.path.strip("/").split("/")
+    if parts and parts[0] in TRANSLATIONS:
+        lang = parts[0]
+    t = TRANSLATIONS[lang]
+    home = "/" if lang == "en" else f"/{lang}/"
+    return render_template("404.html", t=t, lang=lang, home=home), 404
+
+
 @app.route("/favicon.ico")
 def favicon():
     return send_from_directory(app.static_folder, "favicon.svg", mimetype="image/svg+xml")

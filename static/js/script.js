@@ -1,8 +1,62 @@
-async function download() {
-  const url = document.getElementById("urlInput").value;
-  const status = document.getElementById("status");
+function isXUrl(url) {
+  try {
+    const parsed = new URL(url);
+    return parsed.hostname === "x.com" ||
+      parsed.hostname === "www.x.com" ||
+      parsed.hostname === "twitter.com" ||
+      parsed.hostname === "www.twitter.com" ||
+      parsed.hostname.endsWith(".x.com") ||
+      parsed.hostname.endsWith(".twitter.com");
+  } catch (err) {
+    return false;
+  }
+}
 
-  status.innerText = "⏳ Fetching download link...";
+async function pasteLink() {
+  const input = document.getElementById("urlInput");
+  const status = document.getElementById("status");
+  try {
+    const text = await navigator.clipboard.readText();
+    if (text) {
+      input.value = text.trim();
+      input.focus();
+      status.innerText = "";
+      status.classList.remove("error");
+    } else {
+      status.innerText = "Clipboard is empty — copy an X link first, then tap Paste.";
+      status.classList.add("error");
+    }
+  } catch (err) {
+    status.innerText = "Could not read the clipboard. Please paste the X link manually (Ctrl+V / long-press → Paste).";
+    status.classList.add("error");
+    input.focus();
+  }
+}
+
+async function download() {
+  const urlInput = document.getElementById("urlInput");
+  const url = urlInput.value.trim();
+  const status = document.getElementById("status");
+  const downloadBtn = document.getElementById("downloadBtn");
+
+  status.classList.remove("error");
+  status.innerHTML = "";
+
+  if (!url) {
+    status.innerText = "Please paste an X video link first.";
+    status.classList.add("error");
+    urlInput.focus();
+    return;
+  }
+
+  if (!isXUrl(url)) {
+    status.innerText = "TwitterDown is for X only. Please paste a link from x.com or twitter.com.";
+    status.classList.add("error");
+    return;
+  }
+
+  status.innerText = "Fetching download link...";
+  downloadBtn.disabled = true;
 
   try {
     let response = await fetch("/download", {
@@ -14,14 +68,39 @@ async function download() {
     let data = await response.json();
 
     if (data.error) {
-      status.innerText = "❌ " + data.error;
+      status.innerText = "Could not download that X video: " + data.error;
+      status.classList.add("error");
     } else {
       status.innerHTML = `
         <div class="download-options">
-          <a href="${data.file}" download>⬇️ Download MP4</a>
+          <a href="${data.file}" download>Download MP4</a>
         </div>`;
     }
   } catch (err) {
-    status.innerText = "⚠️ Something went wrong.";
+    status.innerText = "Something went wrong. Please try again.";
+    status.classList.add("error");
+  } finally {
+    downloadBtn.disabled = false;
   }
 }
+
+document.addEventListener("DOMContentLoaded", function () {
+  const pasteBtn = document.getElementById("pasteBtn");
+  if (pasteBtn) {
+    pasteBtn.addEventListener("click", pasteLink);
+  }
+  const urlInput = document.getElementById("urlInput");
+  if (urlInput) {
+    urlInput.addEventListener("input", function () {
+      const status = document.getElementById("status");
+      status.innerText = "";
+      status.classList.remove("error");
+    });
+    urlInput.addEventListener("keydown", function (event) {
+      if (event.key === "Enter") {
+        event.preventDefault();
+        download();
+      }
+    });
+  }
+});

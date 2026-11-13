@@ -79,6 +79,9 @@ TRANSLATIONS = {
         "important_h": "Important",
         "important_p1": "TwitterDown is not affiliated with, endorsed by, or connected to X Corp., Twitter, Inc., or X (formerly Twitter). X, Twitter, and their logos are trademarks of X Corp.",
         "important_p2": "Only download content you are allowed to use. Please respect creators and copyright.",
+        "e404_h": "Page not found",
+        "e404_p": "Sorry — the page you're looking for doesn't exist or has been moved. Check the link, or head back to the homepage to download an X video.",
+        "e404_home": "Go to homepage",
         "js": {
             "clipboard_empty": "Clipboard is empty — copy an X link first, then tap Paste.",
             "clipboard_error": "Could not read the clipboard. Please paste the X link manually (Ctrl+V / long-press → Paste).",
@@ -161,6 +164,9 @@ TRANSLATIONS = {
         "important_h": "Importante",
         "important_p1": "TwitterDown no está afiliado, respaldado ni conectado con X Corp., Twitter, Inc. o X (antes Twitter). X, Twitter y sus logotipos son marcas comerciales de X Corp.",
         "important_p2": "Descarga solo contenido que tengas permitido usar. Respeta a los creadores y los derechos de autor.",
+        "e404_h": "Página no encontrada",
+        "e404_p": "Lo sentimos: la página que buscas no existe o se ha movido. Revisa el enlace o vuelve a la página principal para descargar un video de X.",
+        "e404_home": "Ir a la página principal",
         "js": {
             "clipboard_empty": "El portapapeles está vacío: copia primero un enlace de X y luego toca Pegar.",
             "clipboard_error": "No se pudo leer el portapapeles. Pega el enlace de X manualmente (Ctrl+V o mantén presionado → Pegar).",
@@ -243,6 +249,9 @@ TRANSLATIONS = {
         "important_h": "重要提示",
         "important_p1": "TwitterDown 与 X Corp.、Twitter, Inc. 或 X（前 Twitter）没有任何附属、代言或关联关系。X、Twitter 及其徽标均为 X Corp. 的商标。",
         "important_p2": "请仅下载你有权使用的内容，并尊重创作者和版权。",
+        "e404_h": "页面未找到",
+        "e404_p": "抱歉，您要找的页面不存在或已被移动。请检查链接，或返回首页下载 X 视频。",
+        "e404_home": "返回首页",
         "js": {
             "clipboard_empty": "剪贴板为空——请先复制一个 X 链接，然后点击“粘贴”。",
             "clipboard_error": "无法读取剪贴板。请手动粘贴 X 链接（Ctrl+V 或长按 → 粘贴）。",
@@ -325,6 +334,9 @@ TRANSLATIONS = {
         "important_h": "Important",
         "important_p1": "TwitterDown n'est ni affilié, ni approuvé, ni lié à X Corp., Twitter, Inc. ou X (anciennement Twitter). X, Twitter et leurs logos sont des marques de X Corp.",
         "important_p2": "Téléchargez uniquement le contenu que vous êtes autorisé à utiliser. Respectez les créateurs et le droit d'auteur.",
+        "e404_h": "Page introuvable",
+        "e404_p": "Désolé — la page que vous cherchez n'existe pas ou a été déplacée. Vérifiez le lien ou retournez à l'accueil pour télécharger une vidéo X.",
+        "e404_home": "Retour à l'accueil",
         "js": {
             "clipboard_empty": "Le presse-papiers est vide : copiez d'abord un lien X, puis appuyez sur Coller.",
             "clipboard_error": "Impossible de lire le presse-papiers. Collez le lien X manuellement (Ctrl+V ou appui long → Coller).",
@@ -407,6 +419,9 @@ TRANSLATIONS = {
         "important_h": "Önemli",
         "important_p1": "TwitterDown, X Corp., Twitter, Inc. veya X (eski adıyla Twitter) ile bağlı, onaylı veya ilişkili değildir. X, Twitter ve logoları X Corp.'un ticari markalarıdır.",
         "important_p2": "Yalnızca kullanmaya yetkili olduğunuz içerikleri indirin. İçerik oluşturuculara ve telif haklarına saygı gösterin.",
+        "e404_h": "Sayfa bulunamadı",
+        "e404_p": "Üzgünüz — aradığınız sayfa yok veya taşınmış. Bağlantıyı kontrol edin ya da bir X videosu indirmek için ana sayfaya dönün.",
+        "e404_home": "Ana sayfaya dön",
         "js": {
             "clipboard_empty": "Pano boş — önce bir X bağlantısı kopyalayın, ardından Yapıştır'a dokunun.",
             "clipboard_error": "Pano okunamadı. X bağlantısını manuel olarak yapıştırın (Ctrl+V veya uzun bas → Yapıştır).",
@@ -489,6 +504,9 @@ TRANSLATIONS = {
         "important_h": "Penting",
         "important_p1": "TwitterDown tidak berafiliasi dengan, didukung oleh, atau terhubung dengan X Corp., Twitter, Inc., atau X (sebelumnya Twitter). X, Twitter, dan logonya adalah merek dagang dari X Corp.",
         "important_p2": "Hanya download konten yang boleh Anda gunakan. Hormati kreator dan hak cipta.",
+        "e404_h": "Halaman tidak ditemukan",
+        "e404_p": "Maaf — halaman yang Anda cari tidak ada atau telah dipindahkan. Periksa tautannya, atau kembali ke beranda untuk download video X.",
+        "e404_home": "Kembali ke beranda",
         "js": {
             "clipboard_empty": "Clipboard kosong — salin tautan X dulu, lalu ketuk Tempel.",
             "clipboard_error": "Tidak dapat membaca clipboard. Tempel tautan X secara manual (Ctrl+V / tekan lama → Tempel).",

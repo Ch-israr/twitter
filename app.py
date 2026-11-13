@@ -153,7 +153,7 @@ def index():
     return render_home("en")
 
 
-@app.route("/<any(es, zh, fr, tr):lang>/")
+@app.route("/<any(es, zh, fr, tr, id):lang>/")
 def index_lang(lang):
     return render_home(lang)
 

@@ -51,7 +51,7 @@ function showResults(data) {
 
   if (data.videos && data.videos.length) {
     const count = data.videos.length;
-    html += `<p class="result-title">${count} video${count > 1 ? "s" : ""} found — choose a quality:</p>`;
+    html += `<p class="result-title">Video found — choose a quality (${count} available):</p>`;
     html += `<div class="download-options">`;
     data.videos.forEach(function (video) {
       html += `<a href="${escapeHtml(video.url)}" target="_blank" rel="noopener" download>Download ${escapeHtml(video.label)}: mp4</a>`;

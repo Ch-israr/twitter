@@ -19,6 +19,7 @@
 - [Home in Chinese — 推特视频下载](https://twitter-7vlf.onrender.com/zh/)
 - [Home in French — télécharger des vidéos Twitter](https://twitter-7vlf.onrender.com/fr/)
 - [Home in Turkish — Twitter video indir](https://twitter-7vlf.onrender.com/tr/)
+- [Home in Indonesian — download video dari Twitter](https://twitter-7vlf.onrender.com/id/)
 - [About](https://twitter-7vlf.onrender.com/#about)
 - [How it works](https://twitter-7vlf.onrender.com/#how-it-works)
 - [Features](https://twitter-7vlf.onrender.com/#features)

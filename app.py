@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, jsonify, send_file
+from flask import Flask, render_template, request, jsonify, send_file, send_from_directory
 from urllib.parse import urlparse
 import yt_dlp
 import os
@@ -103,6 +103,11 @@ def download_file_fallback(url):
     with yt_dlp.YoutubeDL(ydl_opts) as ydl:
         ydl.download([url])
     return filename
+
+
+@app.route("/favicon.ico")
+def favicon():
+    return send_from_directory(app.static_folder, "favicon.svg", mimetype="image/svg+xml")
 
 
 @app.route("/")

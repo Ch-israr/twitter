@@ -43,15 +43,26 @@
   <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
+  {% set home = '/' if lang == 'en' else '/' + lang + '/' %}
   <header class="site-header">
     <div class="header-inner">
-      <a class="logo" href="/">⬇ TwitterDown</a>
-      <nav class="main-nav">
-        <a href="#about">{{ t.nav_about }}</a>
-        <a href="#how-it-works">{{ t.nav_how }}</a>
-        <a href="#features">{{ t.nav_features }}</a>
-        <a href="#faq">{{ t.nav_faq }}</a>
-      </nav>
+      <a class="logo" href="{{ home }}">⬇ TwitterDown</a>
+      <div class="header-right">
+        <nav class="main-nav">
+          <a href="#how-it-works">{{ t.nav_how }}</a>
+          <a href="#features">{{ t.nav_features }}</a>
+          <a href="#faq">{{ t.nav_faq }}</a>
+          <a href="#about">{{ t.nav_about }}</a>
+        </nav>
+        <div class="lang-dropdown">
+          <button class="lang-btn" type="button" aria-haspopup="true" aria-expanded="false">{{ lang | upper }} ▾</button>
+          <div class="lang-menu">
+            {% for code, name, locale in langs %}
+            <a href="{{ '/' if code == 'en' else '/' + code + '/' }}"{% if code == lang %} class="active"{% endif %}><span class="lang-code">{{ code | upper }}</span>{{ name }}</a>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
     </div>
   </header>
 
@@ -128,12 +139,17 @@
         <p>{{ t.footer_about }}</p>
       </div>
       <div class="footer-col">
-        <h3>{{ t.quick_links_h }}</h3>
+        <h3>{{ t.product_h }}</h3>
         <ul>
+          <li><a href="{{ home }}">{{ t.link_download }}</a></li>
           <li><a href="#how-it-works">{{ t.link_how }}</a></li>
           <li><a href="#features">{{ t.link_features }}</a></li>
           <li><a href="#faq">{{ t.link_faq }}</a></li>
-          <li><a href="/">{{ t.link_download }}</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h3>{{ t.company_h }}</h3>
+        <ul>
           <li><a href="/about">{{ t.link_about }}</a></li>
           <li><a href="/privacy">{{ t.link_privacy }}</a></li>
           <li><a href="/terms">{{ t.link_terms }}</a></li>
@@ -144,14 +160,6 @@
         <h3>{{ t.important_h }}</h3>
         <p>{{ t.important_p1 }}</p>
         <p>{{ t.important_p2 }}</p>
-      </div>
-      <div class="footer-col">
-        <h3>{{ t.lang_h }}</h3>
-        <ul>
-          {% for code, name, locale in langs %}
-          <li><a href="{{ '/' if code == 'en' else '/' + code + '/' }}">{{ name }}</a></li>
-          {% endfor %}
-        </ul>
       </div>
     </div>
     <div class="footer-bottom">

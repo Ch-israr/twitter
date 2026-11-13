@@ -1,0 +1,21 @@
+# TwitterDown
+
+> TwitterDown is a free online tool for downloading videos and GIFs from X (Twitter) as MP4 files. Paste a link from x.com or twitter.com, choose a quality, and save the video. No account, no sign-up, no watermark. X videos only.
+
+## Key facts
+
+- Website: https://twitter-7vlf.onrender.com/
+- What it does: downloads videos and GIFs from public X (Twitter) posts as MP4, in up to three qualities (for example 320x568, 480x852, 720x1280).
+- Cost: free. No account or sign-up needed. No X account needed.
+- Only works with: public posts on x.com and twitter.com.
+- Does not work with: TikTok, YouTube, Instagram, or private posts.
+- How it works: paste an X link, tap Download, pick a quality, save the file. Downloads are served through TwitterDown as real file downloads.
+- Not affiliated with, endorsed by, or connected to X Corp. or Twitter, Inc.
+
+## Pages
+
+- [Home — download a video](https://twitter-7vlf.onrender.com/)
+- [About](https://twitter-7vlf.onrender.com/#about)
+- [How it works](https://twitter-7vlf.onrender.com/#how-it-works)
+- [Features](https://twitter-7vlf.onrender.com/#features)
+- [FAQ](https://twitter-7vlf.onrender.com/#faq)

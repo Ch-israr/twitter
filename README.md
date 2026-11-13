@@ -8,7 +8,7 @@ Download videos and GIFs from X (Twitter) as MP4. Paste a link, pick a quality, 
 
 1. Paste a link from `x.com` or `twitter.com` into the box.
 2. The server reads the tweet's video links with [yt-dlp](https://github.com/yt-dlp/yt-dlp) (metadata only — nothing is downloaded to the server).
-3. You get up to three direct download links (for example 320x568, 480x852, 720x1280) straight from X's CDN servers, plus a thumbnail preview.
+3. You get up to three download buttons (for example 320x568, 480x852, 720x1280) served through TwitterDown as real file downloads, plus a thumbnail preview.
 
 If no direct link is found for a tweet, the server falls back to downloading the video itself and serving the file.
 

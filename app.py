@@ -1,1 +1,142 @@
-ZnJvbSBmbGFzayBpbXBvcnQgRmxhc2ssIHJlbmRlcl90ZW1wbGF0ZSwgcmVxdWVzdCwganNvbmlmeSwgc2VuZF9maWxlCmZyb20gdXJsbGliLnBhcnNlIGltcG9ydCB1cmxwYXJzZQppbXBvcnQgeXRfZGxwCmltcG9ydCBvcwppbXBvcnQgdXVpZAoKYXBwID0gRmxhc2soX19uYW1lX18pCgpET1dOTE9BRF9GT0xERVIgPSAiZG93bmxvYWRzIgpvcy5tYWtlZGlycyhET1dOTE9BRF9GT0xERVIsIGV4aXN0X29rPVRydWUpCgojIFR3aXR0ZXJEb3duIGlzIGZvciBYIG9ubHkg4oCUIHguY29tIGFuZCB0d2l0dGVyLmNvbSB2aWRlbyBsaW5rcyBvbmx5LgpBTExPV0VEX0hPU1RTID0gewogICAgInguY29tIiwKICAgICJ3d3cueC5jb20iLAogICAgInR3aXR0ZXIuY29tIiwKICAgICJ3d3cudHdpdHRlci5jb20iLAp9CgoKZGVmIGlzX3hfdXJsKHVybCk6CiAgICB0cnk6CiAgICAgICAgaG9zdCA9ICh1cmxwYXJzZSh1cmwpLmhvc3RuYW1lIG9yICIiKS5sb3dlcigpCiAgICBleGNlcHQgRXhjZXB0aW9uOgogICAgICAgIHJldHVybiBGYWxzZQogICAgcmV0dXJuIGhvc3QgaW4gQUxMT1dFRF9IT1NUUyBvciBob3N0LmVuZHN3aXRoKCIueC5jb20iKSBvciBob3N0LmVuZHN3aXRoKCIudHdpdHRlci5jb20iKQoKCmRlZiBleHRyYWN0X2RpcmVjdF92aWRlb3ModXJsKToKICAgICIiIlJldHVybiBkaXJlY3QgdmlkZW8udHdpbWcuY29tIE1QNCBsaW5rcyBmb3IgYSB0d2VldCwgYmVzdCBwZXIgcXVhbGl0eS4KCiAgICBVc2VzIHl0LWRscCBvbmx5IHRvIHJlYWQgdGhlIHR3ZWV0J3MgbWV0YWRhdGEg4oCUIG5vIHZpZGVvIGZpbGUgaXMKICAgIGRvd25sb2FkZWQgdG8gdGhpcyBzZXJ2ZXIuIFJldHVybnMgKHZpZGVvcywgdGh1bWJuYWlsLCB0aXRsZSkgd2hlcmUKICAgIHZpZGVvcyBpcyBhIGxpc3Qgb2YgeyJsYWJlbCIsICJ3aWR0aCIsICJoZWlnaHQiLCAidXJsIn0gc29ydGVkIGJ5CiAgICBxdWFsaXR5LCBvciAoW10sIE5vbmUsIE5vbmUpIHdoZW4gbm8gZGlyZWN0IE1QNCBmb3JtYXQgd2FzIGZvdW5kLgogICAgIiIiCiAgICB5ZGxfb3B0cyA9IHsKICAgICAgICAicXVpZXQiOiBUcnVlLAogICAgICAgICJub193YXJuaW5ncyI6IFRydWUsCiAgICAgICAgIm5vcGxheWxpc3QiOiBUcnVlLAogICAgICAgICJzb2NrZXRfdGltZW91dCI6IDYwLAogICAgfQogICAgd2l0aCB5dF9kbHAuWW91dHViZURMKHlkbF9vcHRzKSBhcyB5ZGw6CiAgICAgICAgaW5mbyA9IHlkbC5leHRyYWN0X2luZm8odXJsLCBkb3dubG9hZD1GYWxzZSkKCiAgICBmb3JtYXRzID0gaW5mby5nZXQoImZvcm1hdHMiKSBvciBbXQogICAgY2FuZGlkYXRlcyA9IFsKICAgICAgICBmIGZvciBmIGluIGZvcm1hdHMKICAgICAgICBpZiBmLmdldCgiZXh0IikgPT0gIm1wNCIgYW5kIGYuZ2V0KCJ1cmwiKQogICAgICAgIGFuZCBmLmdldCgidmNvZGVjIikgbm90IGluIChOb25lLCAibm9uZSIpCiAgICBdCiAgICAjIFByZWZlciBmb3JtYXRzIHRoYXQgaW5jbHVkZSBhdWRpbzsgZmFsbCBiYWNrIHRvIHZpZGVvLW9ubHkgb25lcy4KICAgIHdpdGhfYXVkaW8gPSBbCiAgICAgICAgZiBmb3IgZiBpbiBjYW5kaWRhdGVzCiAgICAgICAgaWYgZi5nZXQoImFjb2RlYyIpIG5vdCBpbiAoTm9uZSwgIm5vbmUiKQogICAgXQogICAgcG9vbCA9IHdpdGhfYXVkaW8gb3IgY2FuZGlkYXRlcwoKICAgIGJlc3RfcGVyX2hlaWdodCA9IHt9CiAgICBmb3IgZiBpbiBwb29sOgogICAgICAgIGhlaWdodCA9IGYuZ2V0KCJoZWlnaHQiKSBvciAwCiAgICAgICAgY3VycmVudCA9IGJlc3RfcGVyX2hlaWdodC5nZXQoaGVpZ2h0KQogICAgICAgIGlmIGN1cnJlbnQgaXMgTm9uZSBvciAoZi5nZXQoInRiciIpIG9yIDApID4gKGN1cnJlbnQuZ2V0KCJ0YnIiKSBvciAwKToKICAgICAgICAgICAgYmVzdF9wZXJfaGVpZ2h0W2hlaWdodF0gPSBmCgogICAgdmlkZW9zID0gW10KICAgIGZvciBoZWlnaHQgaW4gc29ydGVkKGJlc3RfcGVyX2hlaWdodCk6CiAgICAgICAgZiA9IGJlc3RfcGVyX2hlaWdodFtoZWlnaHRdCiAgICAgICAgd2lkdGggPSBmLmdldCgid2lkdGgiKQogICAgICAgIGxhYmVsID0gZiJ7d2lkdGh9eHtoZWlnaHR9IiBpZiB3aWR0aCBlbHNlIGYie2hlaWdodH1wIgogICAgICAgIHZpZGVvcy5hcHBlbmQoewogICAgICAgICAgICAibGFiZWwiOiBsYWJlbCwKICAgICAgICAgICAgIndpZHRoIjogd2lkdGgsCiAgICAgICAgICAgICJoZWlnaHQiOiBoZWlnaHQsCiAgICAgICAgICAgICJ1cmwiOiBmWyJ1cmwiXSwKICAgICAgICB9KQogICAgcmV0dXJuIHZpZGVvcywgaW5mby5nZXQoInRodW1ibmFpbCIpLCBpbmZvLmdldCgidGl0bGUiKQoKCmRlZiBkb3dubG9hZF9maWxlX2ZhbGxiYWNrKHVybCk6CiAgICAiIiJPbGQgYmVoYXZpb3VyOiBkb3dubG9hZCB0aGUgdmlkZW8gdG8gdGhpcyBzZXJ2ZXIgYW5kIHNlcnZlIGl0LgoKICAgIEtlcHQgYXMgYSBmYWxsYmFjayBmb3IgdHdlZXRzIHdoZXJlIG5vIGRpcmVjdCBNUDQgbGluayB3YXMgZm91bmQuCiAgICBSZXR1cm5zIHRoZSBzYXZlZCBmaWxlbmFtZS4KICAgICIiIgogICAgZmlsZW5hbWUgPSBmInt1dWlkLnV1aWQ0KCl9Lm1wNCIKICAgIGZpbGVwYXRoID0gb3MucGF0aC5qb2luKERPV05MT0FEX0ZPTERFUiwgZmlsZW5hbWUpCiAgICB5ZGxfb3B0cyA9IHsKICAgICAgICAib3V0dG1wbCI6IGZpbGVwYXRoLAogICAgICAgICJmb3JtYXQiOiAibXA0L2Jlc3QiLAogICAgICAgICJzb2NrZXRfdGltZW91dCI6IDYwLAogICAgfQogICAgd2l0aCB5dF9kbHAuWW91dHViZURMKHlkbF9vcHRzKSBhcyB5ZGw6CiAgICAgICAgeWRsLmRvd25sb2FkKFt1cmxdKQogICAgcmV0dXJuIGZpbGVuYW1lCgoKQGFwcC5yb3V0ZSgiLyIpCmRlZiBpbmRleCgpOgogICAgcmV0dXJuIHJlbmRlcl90ZW1wbGF0ZSgiaW5kZXguaHRtbCIpCgoKQGFwcC5yb3V0ZSgiL2Rvd25sb2FkIiwgbWV0aG9kcz1bIlBPU1QiXSkKZGVmIGRvd25sb2FkKCk6CiAgICBkYXRhID0gcmVxdWVzdC5nZXRfanNvbihzaWxlbnQ9VHJ1ZSkgb3Ige30KICAgIHVybCA9IChkYXRhLmdldCgidXJsIikgb3IgIiIpLnN0cmlwKCkKCiAgICBpZiBub3QgdXJsOgogICAgICAgIHJldHVybiBqc29uaWZ5KHsiZXJyb3IiOiAiTm8gVVJMIHByb3ZpZGVkIn0pLCA0MDAKCiAgICBpZiBub3QgaXNfeF91cmwodXJsKToKICAgICAgICByZXR1cm4ganNvbmlmeSh7ImVycm9yIjogIlR3aXR0ZXJEb3duIGlzIGZvciBYIG9ubHkuIFBsZWFzZSBwYXN0ZSBhIGxpbmsgZnJvbSB4LmNvbSBvciB0d2l0dGVyLmNvbS4ifSksIDQwMAoKICAgIHRyeToKICAgICAgICB2aWRlb3MsIHRodW1ibmFpbCwgdGl0bGUgPSBleHRyYWN0X2RpcmVjdF92aWRlb3ModXJsKQogICAgZXhjZXB0IEV4Y2VwdGlvbiBhcyBlOgogICAgICAgIHJldHVybiBqc29uaWZ5KHsiZXJyb3IiOiBzdHIoZSl9KSwgNTAwCgogICAgaWYgdmlkZW9zOgogICAgICAgIHJldHVybiBqc29uaWZ5KHsKICAgICAgICAgICAgInZpZGVvcyI6IHZpZGVvcywKICAgICAgICAgICAgInRodW1ibmFpbCI6IHRodW1ibmFpbCwKICAgICAgICAgICAgInRpdGxlIjogdGl0bGUsCiAgICAgICAgICAgICJjb3VudCI6IGxlbih2aWRlb3MpLAogICAgICAgIH0pCgogICAgIyBObyBkaXJlY3QgbGluayBmb3VuZCDigJQgZmFsbCBiYWNrIHRvIGRvd25sb2FkaW5nIHRoZSBmaWxlIHNlcnZlci1zaWRlLgogICAgdHJ5OgogICAgICAgIGZpbGVuYW1lID0gZG93bmxvYWRfZmlsZV9mYWxsYmFjayh1cmwpCiAgICAgICAgcmV0dXJuIGpzb25pZnkoeyJmaWxlIjogZiIvZmlsZS97ZmlsZW5hbWV9In0pCiAgICBleGNlcHQgRXhjZXB0aW9uIGFzIGU6CiAgICAgICAgcmV0dXJuIGpzb25pZnkoeyJlcnJvciI6IHN0cihlKX0pLCA1MDAKCgpAYXBwLnJvdXRlKCIvZmlsZS88ZmlsZW5hbWU+IikKZGVmIHNlcnZlX2ZpbGUoZmlsZW5hbWUpOgogICAgZmlsZXBhdGggPSBvcy5wYXRoLmpvaW4oRE9XTkxPQURfRk9MREVSLCBmaWxlbmFtZSkKICAgIHJldHVybiBzZW5kX2ZpbGUoZmlsZXBhdGgsIGFzX2F0dGFjaG1lbnQ9VHJ1ZSkKCgppZiBfX25hbWVfXyA9PSAiX19tYWluX18iOgogICAgYXBwLnJ1bihkZWJ1Zz1GYWxzZSwgcG9ydD01MDAwLCBob3N0PSIwLjAuMC4wIikK
+from flask import Flask, render_template, request, jsonify, send_file
+from urllib.parse import urlparse
+import yt_dlp
+import os
+import uuid
+
+app = Flask(__name__)
+
+DOWNLOAD_FOLDER = "downloads"
+os.makedirs(DOWNLOAD_FOLDER, exist_ok=True)
+
+# TwitterDown is for X only — x.com and twitter.com video links only.
+ALLOWED_HOSTS = {
+    "x.com",
+    "www.x.com",
+    "twitter.com",
+    "www.twitter.com",
+}
+
+
+def is_x_url(url):
+    try:
+        host = (urlparse(url).hostname or "").lower()
+    except Exception:
+        return False
+    return host in ALLOWED_HOSTS or host.endswith(".x.com") or host.endswith(".twitter.com")
+
+
+def extract_direct_videos(url):
+    """Return direct video.twimg.com MP4 links for a tweet, best per quality.
+
+    Uses yt-dlp only to read the tweet's metadata — no video file is
+    downloaded to this server. Returns (videos, thumbnail, title) where
+    videos is a list of {"label", "width", "height", "url"} sorted by
+    quality, or ([], None, None) when no direct MP4 format was found.
+    """
+    ydl_opts = {
+        "quiet": True,
+        "no_warnings": True,
+        "noplaylist": True,
+        "socket_timeout": 60,
+    }
+    with yt_dlp.YoutubeDL(ydl_opts) as ydl:
+        info = ydl.extract_info(url, download=False)
+
+    formats = info.get("formats") or []
+    candidates = [
+        f for f in formats
+        if f.get("ext") == "mp4" and f.get("url")
+        and f.get("vcodec") not in (None, "none")
+    ]
+    # Prefer formats that include audio; fall back to video-only ones.
+    with_audio = [
+        f for f in candidates
+        if f.get("acodec") not in (None, "none")
+    ]
+    pool = with_audio or candidates
+
+    best_per_height = {}
+    for f in pool:
+        height = f.get("height") or 0
+        current = best_per_height.get(height)
+        if current is None or (f.get("tbr") or 0) > (current.get("tbr") or 0):
+            best_per_height[height] = f
+
+    videos = []
+    for height in sorted(best_per_height):
+        f = best_per_height[height]
+        width = f.get("width")
+        label = f"{width}x{height}" if width else f"{height}p"
+        videos.append({
+            "label": label,
+            "width": width,
+            "height": height,
+            "url": f["url"],
+        })
+    return videos, info.get("thumbnail"), info.get("title")
+
+
+def download_file_fallback(url):
+    """Old behaviour: download the video to this server and serve it.
+
+    Kept as a fallback for tweets where no direct MP4 link was found.
+    Returns the saved filename.
+    """
+    filename = f"{uuid.uuid4()}.mp4"
+    filepath = os.path.join(DOWNLOAD_FOLDER, filename)
+    ydl_opts = {
+        "outtmpl": filepath,
+        "format": "mp4/best",
+        "socket_timeout": 60,
+    }
+    with yt_dlp.YoutubeDL(ydl_opts) as ydl:
+        ydl.download([url])
+    return filename
+
+
+@app.route("/")
+def index():
+    return render_template("index.html")
+
+
+@app.route("/download", methods=["POST"])
+def download():
+    data = request.get_json(silent=True) or {}
+    url = (data.get("url") or "").strip()
+
+    if not url:
+        return jsonify({"error": "No URL provided"}), 400
+
+    if not is_x_url(url):
+        return jsonify({"error": "TwitterDown is for X only. Please paste a link from x.com or twitter.com."}), 400
+
+    try:
+        videos, thumbnail, title = extract_direct_videos(url)
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+
+    if videos:
+        return jsonify({
+            "videos": videos,
+            "thumbnail": thumbnail,
+            "title": title,
+            "count": len(videos),
+        })
+
+    # No direct link found — fall back to downloading the file server-side.
+    try:
+        filename = download_file_fallback(url)
+        return jsonify({"file": f"/file/{filename}"})
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+
+
+@app.route("/file/<filename>")
+def serve_file(filename):
+    filepath = os.path.join(DOWNLOAD_FOLDER, filename)
+    return send_file(filepath, as_attachment=True)
+
+
+if __name__ == "__main__":
+    app.run(debug=False, port=5000, host="0.0.0.0")

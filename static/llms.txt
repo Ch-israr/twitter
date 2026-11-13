@@ -15,6 +15,10 @@
 ## Pages
 
 - [Home — download a video](https://twitter-7vlf.onrender.com/)
+- [Home in Spanish — descargar videos de Twitter](https://twitter-7vlf.onrender.com/es/)
+- [Home in Chinese — 推特视频下载](https://twitter-7vlf.onrender.com/zh/)
+- [Home in French — télécharger des vidéos Twitter](https://twitter-7vlf.onrender.com/fr/)
+- [Home in Turkish — Twitter video indir](https://twitter-7vlf.onrender.com/tr/)
 - [About](https://twitter-7vlf.onrender.com/#about)
 - [How it works](https://twitter-7vlf.onrender.com/#how-it-works)
 - [Features](https://twitter-7vlf.onrender.com/#features)

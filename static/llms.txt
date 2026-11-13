@@ -2,25 +2,61 @@
 
 > TwitterDown is a free online Twitter video downloader. Download Twitter videos online free — paste a link from x.com or twitter.com, choose a quality, and save the video or GIF as MP4 in HD or 4K, on iPhone, Android or PC. No account, no sign-up, no watermark. X videos only.
 
-## Key facts
+## What it is
 
 - Website: https://twitter-7vlf.onrender.com/
-- What it does: downloads videos and GIFs from public X (Twitter) posts as MP4, in up to three qualities (for example 320x568, 480x852, 720x1280), including HD up to 720p and 4K when the original post has it. No watermark added. Works on iPhone (Safari), Android and PC — no app needed. Also known as an X video downloader, tweet downloader, and Twitter video saver.
-- Cost: free. No account or sign-up needed. No X account needed.
-- Only works with: public posts on x.com and twitter.com.
-- Does not work with: TikTok, YouTube, Instagram, or private posts.
-- How it works: paste an X link, tap Download, pick a quality, save the file. Downloads are served through TwitterDown as real file downloads.
+- TwitterDown downloads videos and GIFs from public X (Twitter) posts as MP4. It is a free Twitter video downloader and X video downloader, also known as a tweet downloader and Twitter video saver.
+- Cost: free. No account, no sign-up, and no X account needed. No personal details are asked for.
 - Not affiliated with, endorsed by, or connected to X Corp. or Twitter, Inc.
+
+## Features
+
+- Paste an X link and get download links in seconds.
+- Up to three video qualities per post, including HD up to 720p and 4K when the original post has it, plus smaller sizes to save space.
+- Videos and GIFs save as MP4. GIFs on X are short videos, so they download as MP4 too.
+- No watermark added — the video downloads exactly as posted.
+- Downloads are served through TwitterDown as real file downloads, so the file saves to your device instead of opening in a video player.
+- Works in any browser on iPhone (Safari), Android, PC, and tablet. No app to install.
+- Free, with no limits on the number of links you try.
+
+## How to use
+
+1. Copy the link to a post on X that contains a video or GIF (Share → Copy link).
+2. Paste the link into the box on the homepage and tap Download.
+3. Pick a quality and save the file to your device.
+
+## Supported content
+
+- Public posts on x.com and twitter.com that contain a video or GIF.
+- Video qualities depend on the original post: 320p, 480p, 720p, 1080p, or 4K when available.
+
+## Not supported
+
+- TikTok, YouTube, Instagram, or any site other than X.
+- Private posts, deleted posts, and posts with no video or GIF.
+- Downloading content you do not have the right to use.
 
 ## Pages
 
 - [Home — download a video](https://twitter-7vlf.onrender.com/)
-- [Home in Spanish — descargar videos de Twitter](https://twitter-7vlf.onrender.com/es/)
-- [Home in Chinese — 推特视频下载](https://twitter-7vlf.onrender.com/zh/)
-- [Home in French — télécharger des vidéos Twitter](https://twitter-7vlf.onrender.com/fr/)
-- [Home in Turkish — Twitter video indir](https://twitter-7vlf.onrender.com/tr/)
-- [Home in Indonesian — download video dari Twitter](https://twitter-7vlf.onrender.com/id/)
-- [About](https://twitter-7vlf.onrender.com/#about)
 - [How it works](https://twitter-7vlf.onrender.com/#how-it-works)
 - [Features](https://twitter-7vlf.onrender.com/#features)
 - [FAQ](https://twitter-7vlf.onrender.com/#faq)
+- [About](https://twitter-7vlf.onrender.com/about)
+- [Privacy Policy](https://twitter-7vlf.onrender.com/privacy)
+- [Terms of Service](https://twitter-7vlf.onrender.com/terms)
+- [Contact](https://twitter-7vlf.onrender.com/contact)
+
+## Languages
+
+- [English](https://twitter-7vlf.onrender.com/)
+- [Español — descargar videos de Twitter](https://twitter-7vlf.onrender.com/es/)
+- [中文 — 推特视频下载](https://twitter-7vlf.onrender.com/zh/)
+- [Français — télécharger des vidéos Twitter](https://twitter-7vlf.onrender.com/fr/)
+- [Türkçe — Twitter video indir](https://twitter-7vlf.onrender.com/tr/)
+- [Bahasa Indonesia — download video dari Twitter](https://twitter-7vlf.onrender.com/id/)
+
+## More documentation
+
+- [Full documentation — llms-full.txt](https://twitter-7vlf.onrender.com/llms-full.txt)
+- [Sitemap](https://twitter-7vlf.onrender.com/sitemap.xml)

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google Tag Manager -->
+  <script async src="https://www.googletagmanager.com/gtm.js?id=GTM-5XNPSSTZ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+  </script>
+  <!-- End Google Tag Manager -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="{% block description %}TwitterDown — download videos from Twitter / X as MP4. Fast, free, no watermark, no sign-up.{% endblock %}">
+  <meta name="google-site-verification" content="B8JxEkvHXO4JaUEYYhl6W8nD59onzRApzrSQhN9xMlI" />
+  <link rel="icon" type="image/svg+xml" href="/static/favicon.svg">
+  <link rel="canonical" href="{% block canonical %}https://twitter-7vlf.onrender.com/{% endblock %}">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="TwitterDown">
+  <meta property="og:title" content="{% block ogtitle %}TwitterDown — Twitter / X Video Downloader{% endblock %}">
+  <meta property="og:description" content="{% block ogdescription %}Download videos and GIFs from X (Twitter) as MP4. Fast, free, no watermark, no sign-up.{% endblock %}">
+  <meta property="og:url" content="{% block ogurl %}https://twitter-7vlf.onrender.com/{% endblock %}">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="{% block twittertitle %}TwitterDown — Twitter / X Video Downloader{% endblock %}">
+  <meta name="twitter:description" content="{% block twitterdescription %}Download videos and GIFs from X (Twitter) as MP4. Fast, free, no watermark, no sign-up.{% endblock %}">
+  <title>{% block title %}TwitterDown — Twitter / X Video Downloader{% endblock %}</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="logo" href="/">⬇ TwitterDown</a>
+      <nav class="main-nav">
+        <a href="/about">About</a>
+        <a href="/#how-it-works">How it works</a>
+        <a href="/#features">Features</a>
+        <a href="/#faq">FAQ</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    {% block content %}{% endblock %}
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-col">
+        <h3>TwitterDown</h3>
+        <p>TwitterDown — Twitter / X Video Downloader, for X videos only. Paste an X link and save the video as MP4 — fast, free, and with no watermark.</p>
+      </div>
+      <div class="footer-col">
+        <h3>Quick links</h3>
+        <ul>
+          <li><a href="/#how-it-works">How it works</a></li>
+          <li><a href="/#features">Features</a></li>
+          <li><a href="/#faq">FAQ</a></li>
+          <li><a href="/">Download a video</a></li>
+          <li><a href="/about">About</a></li>
+          <li><a href="/privacy">Privacy Policy</a></li>
+          <li><a href="/terms">Terms of Service</a></li>
+          <li><a href="/contact">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h3>Important</h3>
+        <p>TwitterDown is not affiliated with, endorsed by, or connected to X Corp., Twitter, Inc., or X (formerly Twitter). X, Twitter, and their logos are trademarks of X Corp.</p>
+        <p>Only download content you are allowed to use. Please respect creators and copyright.</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>Built with love. © 2026 TwitterDown. All rights reserved.</p>
+      <p>TwitterDown does not host any pirated or copyright content on its server, and all the videos that you download are downloaded to your system directly from their respective CDN servers.</p>
+    </div>
+  </footer>
+</body>
+</html>

@@ -50,10 +50,13 @@ def extract_direct_videos(url):
     # playlist instead of a video file. The protocol is the reliable way to
     # tell them apart — X's direct video URLs do not always end in .mp4,
     # so filtering on the URL text alone misses real files.
+    # NOTE: do NOT filter on vcodec/acodec here — yt-dlp's direct file
+    # formats for X have no codec fields at all (only the playlist formats
+    # get codecs filled in), so requiring a codec would drop every real
+    # direct link.
     candidates = [
         f for f in formats
         if f.get("url")
-        and f.get("vcodec") not in (None, "none")
         and (f.get("protocol") or "https") in ("http", "https")
     ]
     # Prefer formats that include audio; fall back to video-only ones.

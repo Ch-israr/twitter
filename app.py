@@ -144,6 +144,11 @@ def llms_txt():
     return send_from_directory(app.static_folder, "llms.txt", mimetype="text/plain")
 
 
+@app.route("/llms-full.txt")
+def llms_full_txt():
+    return send_from_directory(app.static_folder, "llms-full.txt", mimetype="text/plain")
+
+
 @app.route("/privacy")
 def privacy():
     return render_template("privacy.html")

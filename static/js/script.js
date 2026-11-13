@@ -156,4 +156,25 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     });
   }
+
+  // Header language dropdown: click to open, click outside or Escape to close.
+  var langDropdown = document.querySelector(".lang-dropdown");
+  var langBtn = document.querySelector(".lang-btn");
+  if (langDropdown && langBtn) {
+    langBtn.addEventListener("click", function (event) {
+      event.stopPropagation();
+      var open = langDropdown.classList.toggle("open");
+      langBtn.setAttribute("aria-expanded", open ? "true" : "false");
+    });
+    document.addEventListener("click", function () {
+      langDropdown.classList.remove("open");
+      langBtn.setAttribute("aria-expanded", "false");
+    });
+    document.addEventListener("keydown", function (event) {
+      if (event.key === "Escape") {
+        langDropdown.classList.remove("open");
+        langBtn.setAttribute("aria-expanded", "false");
+      }
+    });
+  }
 });

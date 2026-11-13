@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ lang }}">
 <head>
   <!-- Google Tag Manager -->
   <script async src="https://www.googletagmanager.com/gtm.js?id=GTM-5XNPSSTZ"></script>
@@ -15,52 +15,31 @@
   <!-- End Google AdSense -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Download Twitter videos online free with TwitterDown. Save Twitter videos and GIFs from X in HD as MP4 — fast, free, no watermark, no sign-up.">
+  <meta name="description" content="{{ t.description }}">
   <meta name="google-site-verification" content="B8JxEkvHXO4JaUEYYhl6W8nD59onzRApzrSQhN9xMlI" />
   <meta name="msvalidate.01" content="38093A2C26CB4CA4550A148B1F43B407" />
   <link rel="icon" type="image/svg+xml" href="/static/favicon.svg">
-  <link rel="canonical" href="https://twitter-7vlf.onrender.com/">
+  <link rel="canonical" href="{{ canonical }}">
+  {% for code, url in hreflangs %}
+  <link rel="alternate" hreflang="{{ code }}" href="{{ url }}">
+  {% endfor %}
+  <link rel="alternate" hreflang="x-default" href="https://twitter-7vlf.onrender.com/">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="TwitterDown">
-  <meta property="og:title" content="TwitterDown — Twitter Video Downloader | Download X Videos Free">
-  <meta property="og:description" content="Download Twitter videos online free with TwitterDown. Save Twitter videos and GIFs from X in HD as MP4 — fast, free, no watermark, no sign-up.">
-  <meta property="og:url" content="https://twitter-7vlf.onrender.com/">
+  <meta property="og:title" content="{{ t.title }}">
+  <meta property="og:description" content="{{ t.description }}">
+  <meta property="og:url" content="{{ canonical }}">
+  <meta property="og:locale" content="{{ t.locale }}">
+  {% for code, name, locale in langs %}
+  {% if code != lang %}
+  <meta property="og:locale:alternate" content="{{ locale }}">
+  {% endif %}
+  {% endfor %}
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="TwitterDown — Twitter Video Downloader | Download X Videos Free">
-  <meta name="twitter:description" content="Download Twitter videos online free with TwitterDown. Save Twitter videos and GIFs from X in HD as MP4 — fast, free, no watermark, no sign-up.">
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "WebApplication",
-        "name": "TwitterDown",
-        "alternateName": "Twitter / X Video Downloader",
-        "url": "https://twitter-7vlf.onrender.com/",
-        "applicationCategory": "MultimediaApplication",
-        "operatingSystem": "Any",
-        "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"},
-        "description": "Download Twitter videos online free with TwitterDown. Save Twitter videos and GIFs from X in HD as MP4 — fast, free, no watermark, no sign-up. X videos only."
-      },
-      {
-        "@type": "FAQPage",
-        "mainEntity": [
-          {"@type": "Question", "name": "Is TwitterDown free?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. TwitterDown is free to use, with no sign-up and no account needed."}},
-          {"@type": "Question", "name": "Do I need an X / Twitter account?", "acceptedAnswer": {"@type": "Answer", "text": "No. You only need the link to a public post that contains a video."}},
-          {"@type": "Question", "name": "What quality will the video be?", "acceptedAnswer": {"@type": "Answer", "text": "You get up to three qualities to choose from — for example 320p, 480p and 720p — depending on the original post. Pick the one that suits you."}},
-          {"@type": "Question", "name": "Can I download GIFs too?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. On X, GIFs are short videos, so they download as MP4 just like videos."}},
-          {"@type": "Question", "name": "Does TwitterDown work with TikTok, YouTube, or Instagram?", "acceptedAnswer": {"@type": "Answer", "text": "No. TwitterDown is for X only — x.com and twitter.com video links only."}},
-          {"@type": "Question", "name": "Can I download videos from private posts?", "acceptedAnswer": {"@type": "Answer", "text": "No. TwitterDown only works with public posts that anyone can view."}},
-          {"@type": "Question", "name": "Is it safe and legal to download videos?", "acceptedAnswer": {"@type": "Answer", "text": "Only download videos you have the right to use, and respect the original creator’s rights. TwitterDown is not affiliated with X Corp. or Twitter, Inc."}},
-          {"@type": "Question", "name": "How to download Twitter videos?", "acceptedAnswer": {"@type": "Answer", "text": "Copy the link to the post on X, paste it into the box at the top of this page, tap Download, then pick a quality and save the file. It works on iPhone, Android, and PC — no app and no account needed."}},
-          {"@type": "Question", "name": "Can I save Twitter videos in HD?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. TwitterDown offers up to three qualities, including HD up to 720p when the original post has it. Pick 720p for the best quality, or a smaller size to save space."}},
-          {"@type": "Question", "name": "Can I download a video from X without an account?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. You don’t need an X account or a TwitterDown account. You only need the link to a public post that contains a video."}}
-        ]
-      }
-    ]
-  }
-  </script>
-  <title>TwitterDown — Twitter Video Downloader | Download X Videos Free</title>
+  <meta name="twitter:title" content="{{ t.title }}">
+  <meta name="twitter:description" content="{{ t.description }}">
+  <script type="application/ld+json">{{ faq_json | safe }}</script>
+  <title>{{ t.title }}</title>
   <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
@@ -68,10 +47,10 @@
     <div class="header-inner">
       <a class="logo" href="/">⬇ TwitterDown</a>
       <nav class="main-nav">
-        <a href="#about">About</a>
-        <a href="#how-it-works">How it works</a>
-        <a href="#features">Features</a>
-        <a href="#faq">FAQ</a>
+        <a href="#about">{{ t.nav_about }}</a>
+        <a href="#how-it-works">{{ t.nav_how }}</a>
+        <a href="#features">{{ t.nav_features }}</a>
+        <a href="#faq">{{ t.nav_faq }}</a>
       </nav>
     </div>
   </header>
@@ -79,129 +58,65 @@
   <main>
     <section class="hero">
       <div class="container">
-        <h1>Twitter Video Downloader</h1>
-        <p class="subtitle">Download Twitter videos online free — paste a link from X (Twitter) and save the video or GIF as MP4 in HD. Fast, free, no watermark, and no sign-up needed. <strong>X videos only.</strong></p>
+        <h1>{{ t.h1 }}</h1>
+        <p class="subtitle">{{ t.subtitle | safe }}</p>
         <div class="input-box">
-          <input type="text" id="urlInput" placeholder="Paste your X / Twitter video link here — e.g. https://x.com/username/status/..." aria-label="X video link">
-          <button id="pasteBtn" type="button">Paste</button>
-          <button id="downloadBtn" type="button" onclick="download()">Download</button>
+          <input type="text" id="urlInput" placeholder="{{ t.placeholder }}" aria-label="{{ t.aria_label }}">
+          <button id="pasteBtn" type="button">{{ t.paste }}</button>
+          <button id="downloadBtn" type="button" onclick="download()">{{ t.download }}</button>
         </div>
-        <p class="hint">Works with x.com and twitter.com links. No account needed.</p>
+        <p class="hint">{{ t.hint }}</p>
         <div id="status" role="status"></div>
       </div>
     </section>
 
     <section id="about" class="section section-alt">
       <div class="container container-narrow">
-        <h2>What is TwitterDown?</h2>
-        <p>TwitterDown is a free online Twitter video downloader. Download Twitter videos online free — paste the link to a public post, choose a quality, and save the video to your phone or computer as an MP4. No account, no app, and no watermark.</p>
-        <p>Use it to save Twitter videos, download tweet videos, and save GIFs from X — all in seconds, and all free.</p>
-        <p>TwitterDown works with x.com and twitter.com links only. It does not work with TikTok, YouTube, or Instagram, and it only works with public posts.</p>
+        <h2>{{ t.about_h }}</h2>
+        <p>{{ t.about_p1 }}</p>
+        <p>{{ t.about_p2 }}</p>
+        <p>{{ t.about_p3 }}</p>
       </div>
     </section>
 
     <section id="how-it-works" class="section">
       <div class="container">
-        <h2>How it works</h2>
+        <h2>{{ t.how_h }}</h2>
         <div class="steps">
+          {% for step in t.steps %}
           <div class="step">
-            <span class="step-number">1</span>
-            <h3>Copy the link</h3>
-            <p>Open the post on X (Twitter), tap Share, then Copy link.</p>
+            <span class="step-number">{{ loop.index }}</span>
+            <h3>{{ step.t }}</h3>
+            <p>{{ step.d }}</p>
           </div>
-          <div class="step">
-            <span class="step-number">2</span>
-            <h3>Paste it here</h3>
-            <p>Paste the link into the box above and tap Download.</p>
-          </div>
-          <div class="step">
-            <span class="step-number">3</span>
-            <h3>Choose a quality &amp; save</h3>
-            <p>Pick a quality and tap to download — the file saves straight to your device.</p>
-          </div>
+          {% endfor %}
         </div>
       </div>
     </section>
 
     <section id="features" class="section section-alt">
       <div class="container">
-        <h2>Why use TwitterDown?</h2>
+        <h2>{{ t.features_h }}</h2>
         <div class="features">
+          {% for feature in t.features %}
           <div class="feature">
-            <h3>Fast</h3>
-            <p>Download Twitter videos in seconds — the file comes through TwitterDown, so it saves straight to your device.</p>
+            <h3>{{ feature.t }}</h3>
+            <p>{{ feature.d }}</p>
           </div>
-          <div class="feature">
-            <h3>Free</h3>
-            <p>TwitterDown is a free Twitter downloader — no fees, no limits on the number of links you try, and no account.</p>
-          </div>
-          <div class="feature">
-            <h3>No watermark</h3>
-            <p>Download the video as it was posted, without any added watermark.</p>
-          </div>
-          <div class="feature">
-            <h3>Videos &amp; GIFs</h3>
-            <p>Save Twitter videos and GIFs as MP4, in up to three qualities, served by TwitterDown.</p>
-          </div>
-          <div class="feature">
-            <h3>HD quality</h3>
-            <p>Download Twitter videos in HD — up to 720p, plus 480p and 320p, depending on the original post.</p>
-          </div>
-          <div class="feature">
-            <h3>No sign-up</h3>
-            <p>No X account, no TwitterDown account, and no personal details needed.</p>
-          </div>
-          <div class="feature">
-            <h3>Works anywhere</h3>
-            <p>Use it on your phone, tablet, or computer — just open the site in your browser.</p>
-          </div>
+          {% endfor %}
         </div>
       </div>
     </section>
 
     <section id="faq" class="section">
       <div class="container container-narrow">
-        <h2>Frequently asked questions</h2>
+        <h2>{{ t.faq_h }}</h2>
+        {% for f in t.faqs %}
         <details>
-          <summary>Is TwitterDown free?</summary>
-          <p>Yes. TwitterDown is free to use, with no sign-up and no account needed.</p>
+          <summary>{{ f.q }}</summary>
+          <p>{{ f.a }}</p>
         </details>
-        <details>
-          <summary>Do I need an X / Twitter account?</summary>
-          <p>No. You only need the link to a public post that contains a video.</p>
-        </details>
-        <details>
-          <summary>What quality will the video be?</summary>
-          <p>You get up to three qualities to choose from — for example 320p, 480p and 720p — depending on the original post. Pick the one that suits you.</p>
-        </details>
-        <details>
-          <summary>Can I download GIFs too?</summary>
-          <p>Yes. On X, GIFs are short videos, so they download as MP4 just like videos.</p>
-        </details>
-        <details>
-          <summary>Does TwitterDown work with TikTok, YouTube, or Instagram?</summary>
-          <p>No. TwitterDown is for X only — x.com and twitter.com video links only.</p>
-        </details>
-        <details>
-          <summary>Can I download videos from private posts?</summary>
-          <p>No. TwitterDown only works with public posts that anyone can view.</p>
-        </details>
-        <details>
-          <summary>Is it safe and legal to download videos?</summary>
-          <p>Only download videos you have the right to use, and respect the original creator’s rights. TwitterDown is not affiliated with X Corp. or Twitter, Inc.</p>
-        </details>
-        <details>
-          <summary>How to download Twitter videos?</summary>
-          <p>Copy the link to the post on X, paste it into the box at the top of this page, tap Download, then pick a quality and save the file. It works on iPhone, Android, and PC — no app and no account needed.</p>
-        </details>
-        <details>
-          <summary>Can I save Twitter videos in HD?</summary>
-          <p>Yes. TwitterDown offers up to three qualities, including HD up to 720p when the original post has it. Pick 720p for the best quality, or a smaller size to save space.</p>
-        </details>
-        <details>
-          <summary>Can I download a video from X without an account?</summary>
-          <p>Yes. You don’t need an X account or a TwitterDown account. You only need the link to a public post that contains a video.</p>
-        </details>
+        {% endfor %}
       </div>
     </section>
   </main>
@@ -210,25 +125,33 @@
     <div class="footer-inner">
       <div class="footer-col">
         <h3>TwitterDown</h3>
-        <p>TwitterDown is a free Twitter video downloader for X videos only. Paste an X link and download Twitter videos as MP4 — fast, free, and with no watermark.</p>
+        <p>{{ t.footer_about }}</p>
       </div>
       <div class="footer-col">
-        <h3>Quick links</h3>
+        <h3>{{ t.quick_links_h }}</h3>
         <ul>
-          <li><a href="#how-it-works">How it works</a></li>
-          <li><a href="#features">Features</a></li>
-          <li><a href="#faq">FAQ</a></li>
-          <li><a href="/">Download a video</a></li>
-          <li><a href="/about">About</a></li>
-          <li><a href="/privacy">Privacy Policy</a></li>
-          <li><a href="/terms">Terms of Service</a></li>
-          <li><a href="/contact">Contact</a></li>
+          <li><a href="#how-it-works">{{ t.link_how }}</a></li>
+          <li><a href="#features">{{ t.link_features }}</a></li>
+          <li><a href="#faq">{{ t.link_faq }}</a></li>
+          <li><a href="/">{{ t.link_download }}</a></li>
+          <li><a href="/about">{{ t.link_about }}</a></li>
+          <li><a href="/privacy">{{ t.link_privacy }}</a></li>
+          <li><a href="/terms">{{ t.link_terms }}</a></li>
+          <li><a href="/contact">{{ t.link_contact }}</a></li>
         </ul>
       </div>
       <div class="footer-col">
-        <h3>Important</h3>
-        <p>TwitterDown is not affiliated with, endorsed by, or connected to X Corp., Twitter, Inc., or X (formerly Twitter). X, Twitter, and their logos are trademarks of X Corp.</p>
-        <p>Only download content you are allowed to use. Please respect creators and copyright.</p>
+        <h3>{{ t.important_h }}</h3>
+        <p>{{ t.important_p1 }}</p>
+        <p>{{ t.important_p2 }}</p>
+      </div>
+      <div class="footer-col">
+        <h3>{{ t.lang_h }}</h3>
+        <ul>
+          {% for code, name, locale in langs %}
+          <li><a href="{{ '/' if code == 'en' else '/' + code + '/' }}">{{ name }}</a></li>
+          {% endfor %}
+        </ul>
       </div>
     </div>
     <div class="footer-bottom">
@@ -237,6 +160,7 @@
     </div>
   </footer>
 
+  <script>window.I18N = {{ js_json | safe }};</script>
   <script src="{{ url_for('static', filename='js/script.js') }}"></script>
 </body>
 </html>

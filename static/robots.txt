@@ -1,7 +1,9 @@
-# TwitterDown — https://twitter-7vlf.onrender.com/
-# Search engines and AI crawlers are welcome.
+# TwitterDown - Public Crawler Access
 
 User-agent: *
+Allow: /
+
+User-agent: OAI-SearchBot
 Allow: /
 
 User-agent: GPTBot

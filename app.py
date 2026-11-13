@@ -1,7 +1,9 @@
 from flask import Flask, render_template, request, jsonify, send_file, send_from_directory, Response, stream_with_context
 from urllib.parse import urlparse
 from urllib.request import Request, urlopen
+from translations import TRANSLATIONS, LANGS
 import yt_dlp
+import json
 import os
 import uuid
 
@@ -148,7 +150,61 @@ def contact():
 
 @app.route("/")
 def index():
-    return render_template("index.html")
+    return render_home("en")
+
+
+@app.route("/<any(es, zh, fr, tr):lang>/")
+def index_lang(lang):
+    return render_home(lang)
+
+
+def render_home(lang):
+    """Render the homepage in the requested language.
+
+    The page layout is one template; all text comes from translations.py.
+    JSON-LD is built from the same strings so the schema always matches
+    what the visitor sees.
+    """
+    t = TRANSLATIONS[lang]
+    base = "https://twitter-7vlf.onrender.com/"
+    canonical = base if lang == "en" else base + lang + "/"
+    hreflangs = [
+        ("en", base),
+        *[(code, base + code + "/") for code, _, _ in LANGS if code != "en"],
+    ]
+    faq_json = json.dumps({
+        "@context": "https://schema.org",
+        "@graph": [
+            {
+                "@type": "WebApplication",
+                "name": "TwitterDown",
+                "alternateName": "Twitter / X Video Downloader",
+                "url": base,
+                "applicationCategory": "MultimediaApplication",
+                "operatingSystem": "Any",
+                "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"},
+                "description": t["description"] + " X videos only.",
+            },
+            {
+                "@type": "FAQPage",
+                "mainEntity": [
+                    {"@type": "Question", "name": f["q"],
+                     "acceptedAnswer": {"@type": "Answer", "text": f["a"]}}
+                    for f in t["faqs"]
+                ],
+            },
+        ],
+    }, ensure_ascii=False)
+    return render_template(
+        "index.html",
+        t=t,
+        lang=lang,
+        langs=LANGS,
+        canonical=canonical,
+        hreflangs=hreflangs,
+        faq_json=faq_json,
+        js_json=json.dumps(t["js"], ensure_ascii=False),
+    )
 
 
 @app.route("/download", methods=["POST"])

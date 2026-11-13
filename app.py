@@ -44,16 +44,17 @@ def extract_direct_videos(url):
         info = ydl.extract_info(url, download=False)
 
     formats = info.get("formats") or []
-    # Direct MP4 files only: the URL must be an .mp4 file and the format
-    # must not be an HLS playlist. yt-dlp also lists the same qualities as
-    # m3u8 playlists (protocol "m3u8_native", "/pl/" URLs) with ext "mp4",
-    # so ext alone is not enough — those links return a playlist, not a
-    # video file.
+    # Direct file downloads only. yt-dlp lists the same qualities twice:
+    # once as direct files (no protocol field, plain https URL) and once as
+    # HLS playlists (protocol "m3u8_native", "/pl/" URLs) that return a
+    # playlist instead of a video file. The protocol is the reliable way to
+    # tell them apart — X's direct video URLs do not always end in .mp4,
+    # so filtering on the URL text alone misses real files.
     candidates = [
         f for f in formats
-        if f.get("url") and ".mp4" in f["url"]
+        if f.get("url")
         and f.get("vcodec") not in (None, "none")
-        and not (f.get("protocol") or "").startswith("m3u8")
+        and (f.get("protocol") or "https") in ("http", "https")
     ]
     # Prefer formats that include audio; fall back to video-only ones.
     with_audio = [

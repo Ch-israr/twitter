@@ -312,6 +312,32 @@ details p { margin: 10px 0 0; color: #555; }
   box-shadow: 0 4px 12px rgba(0,0,0,0.15);
 }
 
+/* 404 page */
+.error-page { padding: 80px 0; }
+
+.error-code {
+  font-size: 90px;
+  font-weight: bold;
+  color: #007bff;
+  margin: 0;
+  line-height: 1;
+}
+
+.error-home-btn {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 14px 28px;
+  border-radius: 8px;
+  background: #007bff;
+  color: #fff;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: bold;
+  transition: background 0.3s;
+}
+
+.error-home-btn:hover { background: #0056b3; }
+
 .result-title {
   font-weight: bold;
   margin: 20px 0 5px;

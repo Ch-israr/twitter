@@ -126,6 +126,26 @@ def llms_txt():
     return send_from_directory(app.static_folder, "llms.txt", mimetype="text/plain")
 
 
+@app.route("/privacy")
+def privacy():
+    return render_template("privacy.html")
+
+
+@app.route("/terms")
+def terms():
+    return render_template("terms.html")
+
+
+@app.route("/about")
+def about():
+    return render_template("about.html")
+
+
+@app.route("/contact")
+def contact():
+    return render_template("contact.html")
+
+
 @app.route("/")
 def index():
     return render_template("index.html")

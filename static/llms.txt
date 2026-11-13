@@ -1,11 +1,11 @@
 # TwitterDown
 
-> TwitterDown is a free online Twitter video downloader. Download Twitter videos online free — paste a link from x.com or twitter.com, choose a quality, and save the video or GIF as MP4 in HD. No account, no sign-up, no watermark. X videos only.
+> TwitterDown is a free online Twitter video downloader. Download Twitter videos online free — paste a link from x.com or twitter.com, choose a quality, and save the video or GIF as MP4 in HD or 4K, on iPhone, Android or PC. No account, no sign-up, no watermark. X videos only.
 
 ## Key facts
 
 - Website: https://twitter-7vlf.onrender.com/
-- What it does: downloads videos and GIFs from public X (Twitter) posts as MP4, in up to three qualities (for example 320x568, 480x852, 720x1280), including HD up to 720p. Also known as an X video downloader, tweet downloader, and Twitter video saver.
+- What it does: downloads videos and GIFs from public X (Twitter) posts as MP4, in up to three qualities (for example 320x568, 480x852, 720x1280), including HD up to 720p and 4K when the original post has it. No watermark added. Works on iPhone (Safari), Android and PC — no app needed. Also known as an X video downloader, tweet downloader, and Twitter video saver.
 - Cost: free. No account or sign-up needed. No X account needed.
 - Only works with: public posts on x.com and twitter.com.
 - Does not work with: TikTok, YouTube, Instagram, or private posts.

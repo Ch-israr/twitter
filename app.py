@@ -1,5 +1,6 @@
-from flask import Flask, render_template, request, jsonify, send_file, send_from_directory
+from flask import Flask, render_template, request, jsonify, send_file, send_from_directory, Response, stream_with_context
 from urllib.parse import urlparse
+from urllib.request import Request, urlopen
 import yt_dlp
 import os
 import uuid
@@ -145,6 +146,58 @@ def download():
         return jsonify({"file": f"/file/{filename}"})
     except Exception as e:
         return jsonify({"error": str(e)}), 500
+
+
+@app.route("/get")
+def stream_video():
+    """Stream a video from X's CDN through this server as a file download.
+
+    Direct video.twimg.com links are blocked for some users' browsers or
+    networks (HTTP 403), and browsers open them in a player instead of
+    downloading. This route fetches the file on the server and hands it to
+    the user as an attachment, so the download always works. Only
+    video.twimg.com video links are allowed — this is not an open proxy.
+    The file is streamed in chunks and never saved to disk.
+    """
+    cdn_url = (request.args.get("url") or "").strip()
+    label = (request.args.get("label") or "video").strip()
+
+    try:
+        parsed = urlparse(cdn_url)
+    except Exception:
+        return jsonify({"error": "Invalid URL"}), 400
+
+    if parsed.scheme != "https" or parsed.hostname != "video.twimg.com":
+        return jsonify({"error": "Only video.twimg.com links are allowed"}), 400
+    if not (parsed.path.startswith("/amplify_video/") or parsed.path.startswith("/ext_tw_video/")):
+        return jsonify({"error": "Invalid video link"}), 400
+
+    safe_label = "".join(c for c in label if c.isalnum()) or "video"
+    filename = f"twitterdown-{safe_label}.mp4"
+
+    try:
+        upstream = urlopen(Request(cdn_url, headers={"User-Agent": "Mozilla/5.0"}), timeout=60)
+    except Exception as e:
+        return jsonify({"error": str(e)}), 502
+
+    def generate():
+        try:
+            while True:
+                chunk = upstream.read(64 * 1024)
+                if not chunk:
+                    break
+                yield chunk
+        finally:
+            upstream.close()
+
+    headers = {
+        "Content-Type": "video/mp4",
+        "Content-Disposition": f'attachment; filename="{filename}"',
+    }
+    length = upstream.headers.get("Content-Length")
+    if length:
+        headers["Content-Length"] = length
+    return Response(stream_with_context(generate()), headers=headers)
 
 
 @app.route("/file/<filename>")

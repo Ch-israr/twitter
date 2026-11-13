@@ -1,3 +1,10 @@
+// Page-language strings, set by the template as window.I18N.
+// Falls back to English when a page has no translations (e.g. /privacy).
+const I18N = window.I18N || {};
+function tr(key, fallback) {
+  return I18N[key] || fallback;
+}
+
 function isXUrl(url) {
   try {
     const parsed = new URL(url);
@@ -31,11 +38,11 @@ async function pasteLink() {
       status.innerText = "";
       status.classList.remove("error");
     } else {
-      status.innerText = "Clipboard is empty — copy an X link first, then tap Paste.";
+      status.innerText = tr("clipboard_empty", "Clipboard is empty — copy an X link first, then tap Paste.");
       status.classList.add("error");
     }
   } catch (err) {
-    status.innerText = "Could not read the clipboard. Please paste the X link manually (Ctrl+V / long-press → Paste).";
+    status.innerText = tr("clipboard_error", "Could not read the clipboard. Please paste the X link manually (Ctrl+V / long-press → Paste).");
     status.classList.add("error");
     input.focus();
   }
@@ -46,28 +53,28 @@ function showResults(data) {
   let html = "";
 
   if (data.thumbnail) {
-    html += `<div class="video-thumb"><img src="${escapeHtml(data.thumbnail)}" alt="Video thumbnail"></div>`;
+    html += `<div class="video-thumb"><img src="${escapeHtml(data.thumbnail)}" alt="${escapeHtml(tr("thumb_alt", "Video thumbnail"))}"></div>`;
   }
 
   if (data.videos && data.videos.length) {
     const count = data.videos.length;
-    html += `<p class="result-title">Video found — choose a quality (${count} available):</p>`;
+    html += `<p class="result-title">${escapeHtml(tr("found", "Video found — choose a quality ({n} available):").replace("{n}", count))}</p>`;
     html += `<div class="download-options">`;
     data.videos.forEach(function (video) {
       // Route the download through TwitterDown so it saves as a file even
       // where X's video server blocks direct links, and so the browser
       // downloads instead of opening its video player.
       const via = "/get?url=" + encodeURIComponent(video.url) + "&label=" + encodeURIComponent(video.label);
-      html += `<a href="${escapeHtml(via)}" download>Download ${escapeHtml(video.label)}: mp4</a>`;
+      html += `<a href="${escapeHtml(via)}" download>${escapeHtml(tr("download_quality", "Download {label}: mp4").replace("{label}", video.label))}</a>`;
     });
     html += `</div>`;
   } else if (data.file) {
     html += `<div class="download-options">
-      <a href="${escapeHtml(data.file)}" download>Download MP4</a>
+      <a href="${escapeHtml(data.file)}" download>${escapeHtml(tr("download_mp4", "Download MP4"))}</a>
     </div>`;
   }
 
-  html += `<p><a href="#" class="download-another" onclick="downloadAnother(event)">Download Another Video</a></p>`;
+  html += `<p><a href="#" class="download-another" onclick="downloadAnother(event)">${escapeHtml(tr("download_another", "Download Another Video"))}</a></p>`;
   status.innerHTML = html;
 }
 
@@ -92,19 +99,19 @@ async function download() {
   status.innerHTML = "";
 
   if (!url) {
-    status.innerText = "Please paste an X video link first.";
+    status.innerText = tr("paste_first", "Please paste an X video link first.");
     status.classList.add("error");
     urlInput.focus();
     return;
   }
 
   if (!isXUrl(url)) {
-    status.innerText = "TwitterDown is for X only. Please paste a link from x.com or twitter.com.";
+    status.innerText = tr("x_only", "TwitterDown is for X only. Please paste a link from x.com or twitter.com.");
     status.classList.add("error");
     return;
   }
 
-  status.innerText = "Fetching download links...";
+  status.innerText = tr("fetching", "Fetching download links...");
   downloadBtn.disabled = true;
 
   try {
@@ -117,13 +124,13 @@ async function download() {
     let data = await response.json();
 
     if (data.error) {
-      status.innerText = "Could not download that X video: " + data.error;
+      status.innerText = tr("could_not", "Could not download that X video: ") + data.error;
       status.classList.add("error");
     } else {
       showResults(data);
     }
   } catch (err) {
-    status.innerText = "Something went wrong. Please try again.";
+    status.innerText = tr("went_wrong", "Something went wrong. Please try again.");
     status.classList.add("error");
   } finally {
     downloadBtn.disabled = false;

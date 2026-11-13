@@ -1,0 +1,9 @@
+# Render Blueprint — import this repo in Render to create the twitter service.
+# Dashboard: Render → New → Blueprint → select this repo.
+services:
+  - type: web
+    name: twitter
+    runtime: docker
+    dockerfilePath: ./Dockerfile
+    plan: free
+    healthCheckPath: /

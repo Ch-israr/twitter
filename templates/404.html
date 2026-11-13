@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block title %}{{ t.e404_h }} — TwitterDown{% endblock %}
+{% block description %}{{ t.e404_h }} — TwitterDown{% endblock %}
+
+{% block content %}
+<section class="error-page">
+  <div class="container">
+    <p class="error-code">404</p>
+    <h1>{{ t.e404_h }}</h1>
+    <p class="subtitle">{{ t.e404_p }}</p>
+    <a class="error-home-btn" href="{{ home }}">{{ t.e404_home }}</a>
+  </div>
+</section>
+{% endblock %}

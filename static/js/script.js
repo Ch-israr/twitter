@@ -54,7 +54,11 @@ function showResults(data) {
     html += `<p class="result-title">Video found — choose a quality (${count} available):</p>`;
     html += `<div class="download-options">`;
     data.videos.forEach(function (video) {
-      html += `<a href="${escapeHtml(video.url)}" target="_blank" rel="noopener" download>Download ${escapeHtml(video.label)}: mp4</a>`;
+      // Route the download through TwitterDown so it saves as a file even
+      // where X's video server blocks direct links, and so the browser
+      // downloads instead of opening its video player.
+      const via = "/get?url=" + encodeURIComponent(video.url) + "&label=" + encodeURIComponent(video.label);
+      html += `<a href="${escapeHtml(via)}" download>Download ${escapeHtml(video.label)}: mp4</a>`;
     });
     html += `</div>`;
   } else if (data.file) {

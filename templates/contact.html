@@ -1,19 +1,19 @@
 {% extends "base.html" %}
-{% block title %}Contact — TwitterDown{% endblock %}
-{% block description %}Contact TwitterDown: questions, problems, or suggestions about our free X video downloader.{% endblock %}
-{% block canonical %}https://twitter-7vlf.onrender.com/contact{% endblock %}
-{% block ogtitle %}Contact — TwitterDown{% endblock %}
-{% block ogdescription %}Contact TwitterDown: questions, problems, or suggestions about our free X video downloader.{% endblock %}
-{% block ogurl %}https://twitter-7vlf.onrender.com/contact{% endblock %}
-{% block twittertitle %}Contact — TwitterDown{% endblock %}
-{% block twitterdescription %}Contact TwitterDown: questions, problems, or suggestions about our free X video downloader.{% endblock %}
+{% block title %}{{ t.contact_title }}{% endblock %}
+{% block description %}{{ t.contact_meta }}{% endblock %}
+{% block canonical %}{{ canonical }}{% endblock %}
+{% block ogtitle %}{{ t.contact_title }}{% endblock %}
+{% block ogdescription %}{{ t.contact_meta }}{% endblock %}
+{% block ogurl %}{{ canonical }}{% endblock %}
+{% block twittertitle %}{{ t.contact_title }}{% endblock %}
+{% block twitterdescription %}{{ t.contact_meta }}{% endblock %}
 {% block content %}
     <section class="section">
       <div class="container container-narrow">
-        <h1>Contact</h1>
-        <p>Questions, problems, or suggestions? We'd like to hear from you.</p>
-        <p>Our business email address will be listed here soon.</p>
-        <p>Please note: we cannot help with private posts, other platforms such as TikTok or YouTube, or problems with your X account.</p>
+        <h1>{{ t.contact_h }}</h1>
+        <p>{{ t.contact_p1 }}</p>
+        <p>{{ t.contact_p2 }}</p>
+        <p>{{ t.contact_p3 }}</p>
       </div>
     </section>
 {% endblock %}

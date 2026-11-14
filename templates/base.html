@@ -19,38 +19,42 @@
   <meta name="google-site-verification" content="B8JxEkvHXO4JaUEYYhl6W8nD59onzRApzrSQhN9xMlI" />
   <meta name="msvalidate.01" content="38093A2C26CB4CA4550A148B1F43B407" />
   <link rel="icon" type="image/svg+xml" href="/static/favicon.svg">
-  <link rel="canonical" href="{% block canonical %}https://twitter-7vlf.onrender.com/{% endblock %}">
+  <link rel="canonical" href="{% block canonical %}{{ canonical | default('https://twitter-7vlf.onrender.com/', true) }}{% endblock %}">
+  {% for code, url in hreflangs | default([], true) %}
+  <link rel="alternate" hreflang="{{ code }}" href="{{ url }}">
+  {% endfor %}
+  {% if hreflangs is defined and hreflangs %}
+  <link rel="alternate" hreflang="x-default" href="{{ x_default | default('https://twitter-7vlf.onrender.com/', true) }}">
+  {% endif %}
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="TwitterDown">
   <meta property="og:title" content="{% block ogtitle %}TwitterDown — Twitter / X Video Downloader{% endblock %}">
   <meta property="og:description" content="{% block ogdescription %}Download videos and GIFs from X (Twitter) as MP4. Fast, free, no watermark, no sign-up.{% endblock %}">
-  <meta property="og:url" content="{% block ogurl %}https://twitter-7vlf.onrender.com/{% endblock %}">
+  <meta property="og:url" content="{% block ogurl %}{{ canonical | default('https://twitter-7vlf.onrender.com/', true) }}{% endblock %}">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="{% block twittertitle %}TwitterDown — Twitter / X Video Downloader{% endblock %}">
   <meta name="twitter:description" content="{% block twitterdescription %}Download videos and GIFs from X (Twitter) as MP4. Fast, free, no watermark, no sign-up.{% endblock %}">
+  {% block jsonld %}{% endblock %}
   <title>{% block title %}TwitterDown — Twitter / X Video Downloader{% endblock %}</title>
   <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
   <header class="site-header">
     <div class="header-inner">
-      <a class="logo" href="/">⬇ TwitterDown</a>
+      <a class="logo" href="{{ home | default('/', true) }}">⬇ TwitterDown</a>
       <div class="header-right">
         <nav class="main-nav">
-          <a href="/#how-it-works">How it works</a>
-          <a href="/#features">Features</a>
-          <a href="/#faq">FAQ</a>
-          <a href="/about">About</a>
+          <a href="{{ home | default('/', true) }}#how-it-works">{{ t.nav_how | default('How it works', true) }}</a>
+          <a href="{{ home | default('/', true) }}#features">{{ t.nav_features | default('Features', true) }}</a>
+          <a href="{{ faq_url | default('/faq', true) }}">{{ t.nav_faq | default('FAQ', true) }}</a>
+          <a href="{{ about_url | default('/about', true) }}">{{ t.nav_about | default('About', true) }}</a>
         </nav>
         <div class="lang-dropdown">
-          <button class="lang-btn" type="button" aria-haspopup="true" aria-expanded="false">EN ▾</button>
+          <button class="lang-btn" type="button" aria-haspopup="true" aria-expanded="false">{{ lang | default('en', true) | upper }} ▾</button>
           <div class="lang-menu">
-            <a href="/" class="active"><span class="lang-code">EN</span>English</a>
-            <a href="/es/"><span class="lang-code">ES</span>Español</a>
-            <a href="/zh/"><span class="lang-code">ZH</span>中文</a>
-            <a href="/fr/"><span class="lang-code">FR</span>Français</a>
-            <a href="/tr/"><span class="lang-code">TR</span>Türkçe</a>
-            <a href="/id/"><span class="lang-code">ID</span>Bahasa Indonesia</a>
+            {% for code, name, locale in langs | default([('en', 'English', 'en_US'), ('es', 'Español', 'es_ES'), ('zh', '中文', 'zh_CN'), ('fr', 'Français', 'fr_FR'), ('tr', 'Türkçe', 'tr_TR'), ('id', 'Bahasa Indonesia', 'id_ID')], true) %}
+            <a href="{{ lang_urls[code] if lang_urls is defined else ('/' if code == 'en' else '/' + code + '/') }}"{% if code == (lang | default('en', true)) %} class="active"{% endif %}><span class="lang-code">{{ code | upper }}</span>{{ name }}</a>
+            {% endfor %}
           </div>
         </div>
       </div>
@@ -65,30 +69,30 @@
     <div class="footer-inner">
       <div class="footer-col">
         <h3>TwitterDown</h3>
-        <p>TwitterDown — Twitter / X Video Downloader, for X videos only. Paste an X link and save the video as MP4 — fast, free, and with no watermark.</p>
+        <p>{{ t.footer_about | default('TwitterDown — Twitter / X Video Downloader, for X videos only. Paste an X link and save the video as MP4 — fast, free, and with no watermark.', true) }}</p>
       </div>
       <div class="footer-col">
-        <h3>Product</h3>
+        <h3>{{ t.product_h | default('Product', true) }}</h3>
         <ul>
-          <li><a href="/">Download a video</a></li>
-          <li><a href="/#how-it-works">How it works</a></li>
-          <li><a href="/#features">Features</a></li>
-          <li><a href="/#faq">FAQ</a></li>
+          <li><a href="{{ home | default('/', true) }}">{{ t.link_download | default('Download a video', true) }}</a></li>
+          <li><a href="{{ home | default('/', true) }}#how-it-works">{{ t.link_how | default('How it works', true) }}</a></li>
+          <li><a href="{{ home | default('/', true) }}#features">{{ t.link_features | default('Features', true) }}</a></li>
+          <li><a href="{{ faq_url | default('/faq', true) }}">{{ t.link_faq | default('FAQ', true) }}</a></li>
         </ul>
       </div>
       <div class="footer-col">
-        <h3>Company</h3>
+        <h3>{{ t.company_h | default('Company', true) }}</h3>
         <ul>
-          <li><a href="/about">About</a></li>
-          <li><a href="/privacy">Privacy Policy</a></li>
-          <li><a href="/terms">Terms of Service</a></li>
-          <li><a href="/contact">Contact</a></li>
+          <li><a href="{{ about_url | default('/about', true) }}">{{ t.link_about | default('About', true) }}</a></li>
+          <li><a href="/privacy">{{ t.link_privacy | default('Privacy Policy', true) }}</a></li>
+          <li><a href="/terms">{{ t.link_terms | default('Terms of Service', true) }}</a></li>
+          <li><a href="{{ contact_url | default('/contact', true) }}">{{ t.link_contact | default('Contact', true) }}</a></li>
         </ul>
       </div>
       <div class="footer-col">
-        <h3>Important</h3>
-        <p>TwitterDown is not affiliated with, endorsed by, or connected to X Corp., Twitter, Inc., or X (formerly Twitter). X, Twitter, and their logos are trademarks of X Corp.</p>
-        <p>Only download content you are allowed to use. Please respect creators and copyright.</p>
+        <h3>{{ t.important_h | default('Important', true) }}</h3>
+        <p>{{ t.important_p1 | default('TwitterDown is not affiliated with, endorsed by, or connected to X Corp., Twitter, Inc., or X (formerly Twitter). X, Twitter, and their logos are trademarks of X Corp.', true) }}</p>
+        <p>{{ t.important_p2 | default('Only download content you are allowed to use. Please respect creators and copyright.', true) }}</p>
       </div>
     </div>
     <div class="footer-bottom">

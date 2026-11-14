@@ -1,20 +1,21 @@
 {% extends "base.html" %}
-{% block title %}About — TwitterDown{% endblock %}
-{% block description %}About TwitterDown: a free tool to download videos and GIFs from X (Twitter) as MP4. Fast, free, no watermark, no sign-up.{% endblock %}
-{% block canonical %}https://twitter-7vlf.onrender.com/about{% endblock %}
-{% block ogtitle %}About — TwitterDown{% endblock %}
-{% block ogdescription %}About TwitterDown: a free tool to download videos and GIFs from X (Twitter) as MP4. Fast, free, no watermark, no sign-up.{% endblock %}
-{% block ogurl %}https://twitter-7vlf.onrender.com/about{% endblock %}
-{% block twittertitle %}About — TwitterDown{% endblock %}
-{% block twitterdescription %}About TwitterDown: a free tool to download videos and GIFs from X (Twitter) as MP4. Fast, free, no watermark, no sign-up.{% endblock %}
+{% block title %}{{ t.about_title }}{% endblock %}
+{% block description %}{{ t.about_meta }}{% endblock %}
+{% block canonical %}{{ canonical }}{% endblock %}
+{% block ogtitle %}{{ t.about_title }}{% endblock %}
+{% block ogdescription %}{{ t.about_meta }}{% endblock %}
+{% block ogurl %}{{ canonical }}{% endblock %}
+{% block twittertitle %}{{ t.about_title }}{% endblock %}
+{% block twitterdescription %}{{ t.about_meta }}{% endblock %}
 {% block content %}
     <section class="section">
       <div class="container container-narrow">
-        <h1>About TwitterDown</h1>
-        <p>TwitterDown is a free online tool for downloading videos and GIFs from X (Twitter) as MP4 files. Paste the link to a public post, choose a quality, and save the video to your phone or computer — no account, no app, and no watermark.</p>
-        <p>TwitterDown works with x.com and twitter.com links only. It does not work with TikTok, YouTube, or Instagram, and it only works with public posts that anyone can view.</p>
-        <p>TwitterDown is an independent project, built and run by its developer. It does not host any videos: downloads come from X's servers, through TwitterDown, straight to your device.</p>
-        <p>If you have a question, a problem, or a suggestion, you can reach us on the <a href="/contact">Contact page</a>.</p>
+        <h1>{{ t.about_h }}</h1>
+        <p>{{ t.about_p1 }}</p>
+        <p>{{ t.about_p2 }}</p>
+        <p>{{ t.about_p3 }}</p>
+        <p>{{ t.about_independent }}</p>
+        <p>{{ t.about_contact.replace("{contact_url}", contact_url) | safe }}</p>
       </div>
     </section>
 {% endblock %}

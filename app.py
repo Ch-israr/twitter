@@ -149,6 +149,15 @@ def llms_full_txt():
     return send_from_directory(app.static_folder, "llms-full.txt", mimetype="text/plain")
 
 
+@app.route("/twitterdown-1db1d3abcacba217f162a3ad.txt")
+def indexnow_key():
+    return send_from_directory(
+        app.static_folder,
+        "twitterdown-1db1d3abcacba217f162a3ad.txt",
+        mimetype="text/plain",
+    )
+
+
 @app.route("/privacy")
 def privacy():
     return render_template("privacy.html")

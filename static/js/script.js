@@ -56,6 +56,10 @@ function showResults(data) {
     html += `<div class="video-thumb"><img src="${escapeHtml(data.thumbnail)}" alt="${escapeHtml(tr("thumb_alt", "Video thumbnail"))}"></div>`;
   }
 
+  if (data.title) {
+    html += `<p class="result-caption">${escapeHtml(data.title)}</p>`;
+  }
+
   if (data.videos && data.videos.length) {
     const count = data.videos.length;
     html += `<p class="result-title">${escapeHtml(tr("found", "Video found — choose a quality ({n} available):").replace("{n}", count))}</p>`;

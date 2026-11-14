@@ -23,8 +23,8 @@
 
 - Videos download as MP4.
 - GIFs on X are short videos, so they download as MP4 too.
-- Each post offers up to three qualities to choose from, for example 320p, 480p, and 720p.
-- HD is supported up to 720p, and higher qualities — 1080p or 4K — appear when the original post was uploaded at that quality. Smaller sizes are also offered to save space.
+- Each post offers up to five qualities to choose from, for example 480p, 720p, 1080p, and 4K.
+- HD, 1080p, and 4K are offered when the original post was uploaded at that quality. Smaller sizes are also offered to save space.
 - The exact qualities listed depend on the original post. Not every post has every quality.
 
 ### Platforms and devices
@@ -109,7 +109,7 @@ No. You only need the link to a public post that contains a video.
 
 ### What quality will the video be?
 
-You get up to three qualities to choose from — for example 320p, 480p and 720p — depending on the original post. Pick the one that suits you.
+You get up to five qualities to choose from — for example 480p, 720p, 1080p and 4K — depending on the original post. Pick the one that suits you.
 
 ### Can I download GIFs too?
 
@@ -133,7 +133,7 @@ Copy the link to the post on X, paste it into the box at the top of this page, t
 
 ### Can I save Twitter videos in HD?
 
-Yes. TwitterDown offers up to three qualities, including HD up to 720p when the original post has it. Pick 720p for the best quality, or a smaller size to save space.
+Yes. TwitterDown offers up to five qualities, including HD and 4K when the original post has it. Pick the highest quality for the best result, or a smaller size to save space.
 
 ### Can I download a video from X without an account?
 

@@ -29,6 +29,12 @@ def is_x_url(url):
     return host in ALLOWED_HOSTS or host.endswith(".x.com") or host.endswith(".twitter.com")
 
 
+# Friendly message shown when a post has no downloadable video (for
+# example a photo-only post). The raw yt-dlp error is technical and is
+# never shown to the user for this case.
+NO_VIDEO_MESSAGE = "No video could be found in this post — it may only contain photos, or it may be private or deleted."
+
+
 def extract_direct_videos(url):
     """Return direct video.twimg.com MP4 links for a tweet, best per quality.
 
@@ -368,6 +374,8 @@ def download():
     try:
         videos, thumbnail, title = extract_direct_videos(url)
     except Exception as e:
+        if "no video could be found" in str(e).lower():
+            return jsonify({"error": NO_VIDEO_MESSAGE}), 404
         return jsonify({"error": str(e)}), 500
 
     if videos:
@@ -383,6 +391,8 @@ def download():
         filename = download_file_fallback(url)
         return jsonify({"file": f"/file/{filename}"})
     except Exception as e:
+        if "no video could be found" in str(e).lower():
+            return jsonify({"error": NO_VIDEO_MESSAGE}), 404
         return jsonify({"error": str(e)}), 500
 
 
@@ -407,7 +417,7 @@ def stream_video():
 
     if parsed.scheme != "https" or parsed.hostname != "video.twimg.com":
         return jsonify({"error": "Only video.twimg.com links are allowed"}), 400
-    if not (parsed.path.startswith("/amplify_video/") or parsed.path.startswith("/ext_tw_video/")):
+    if not (parsed.path.startswith("/amplify_video/") or parsed.path.startswith("/ext_tw_video/") or parsed.path.startswith("/tweet_video/")):
         return jsonify({"error": "Invalid video link"}), 400
 
     safe_label = "".join(c for c in label if c.isalnum()) or "video"

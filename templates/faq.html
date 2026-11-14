@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block title %}{{ t.faq_title }}{% endblock %}
+{% block description %}{{ t.faq_meta }}{% endblock %}
+{% block canonical %}{{ canonical }}{% endblock %}
+{% block ogtitle %}{{ t.faq_title }}{% endblock %}
+{% block ogdescription %}{{ t.faq_meta }}{% endblock %}
+{% block ogurl %}{{ canonical }}{% endblock %}
+{% block twittertitle %}{{ t.faq_title }}{% endblock %}
+{% block twitterdescription %}{{ t.faq_meta }}{% endblock %}
+{% block jsonld %}<script type="application/ld+json">{{ faq_json | safe }}</script>{% endblock %}
+{% block content %}
+    <section class="section">
+      <div class="container container-narrow">
+        <h1>{{ t.faq_h }}</h1>
+        {% for f in t.faqs %}
+        <details>
+          <summary>{{ f.q }}</summary>
+          <p>{{ f.a }}</p>
+        </details>
+        {% endfor %}
+      </div>
+    </section>
+{% endblock %}

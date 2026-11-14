@@ -207,7 +207,7 @@ The link may point to a text-only or image-only post, or to a profile page inste
 - [Terms of Service](https://twitter-7vlf.onrender.com/terms)
 - [Contact](https://twitter-7vlf.onrender.com/contact)
 
-About, Contact and FAQ are also available in every language — for example /es/about/, /zh/faq/ and /id/contact/. Navigation keeps the selected language on every page; Privacy and Terms are English-only.
+About, Contact and FAQ are also available in every language — for example /es/about/, /zh/faq/ and /id/contact/. Privacy and Terms have a page in every language too (for example /es/privacy/ and /zh/terms/); their legal text stays in English while the navigation around it uses the selected language. Navigation keeps the selected language on every page.
 
 ## Languages
 

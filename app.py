@@ -128,19 +128,23 @@ def page_not_found(e):
 
 
 # Pages with a translated version in every language. Privacy and Terms
-# stay English-only: links to them fall back to the English page, and
-# the language switcher on those pages goes to the language homepages.
+# keep their legal text in English, but they have a URL in every language
+# (/es/privacy/, /zh/terms/, ...) so the language switcher keeps the user
+# on the same page with translated navigation instead of dropping them
+# back to the homepage. Pages with no per-language URL at all (e.g. the
+# 404 page) fall back to the language homepage.
 TRANSLATED_PAGES = {"home", "about", "contact", "faq"}
+ROUTED_PAGES = TRANSLATED_PAGES | {"privacy", "terms"}
 
 
 def lang_url(page, code):
     """URL of `page` in language `code`, preserving the language prefix.
 
     English info pages keep their existing slash-less URLs (/about);
-    language versions use a trailing slash (/zh/about/). Untranslated
-    pages fall back to the language homepage.
+    language versions use a trailing slash (/zh/about/). Pages with no
+    per-language URL fall back to the language homepage.
     """
-    if page not in TRANSLATED_PAGES:
+    if page not in ROUTED_PAGES:
         return "/" if code == "en" else f"/{code}/"
     if page == "home":
         return "/" if code == "en" else f"/{code}/"
@@ -152,16 +156,16 @@ def page_context(lang, page):
     language, and every internal URL in that language."""
     t = TRANSLATIONS[lang]
     base = "https://twitter-7vlf.onrender.com/"
-    # English-only pages (privacy, terms) keep their own URL for canonical /
-    # hreflang purposes; lang_url() would fall back to the homepage for them.
-    if page in TRANSLATED_PAGES:
+    # Pages with a per-language URL keep their own URL for canonical /
+    # hreflang purposes; pages without one fall back to the homepage.
+    if page in ROUTED_PAGES:
         this_url = lang_url(page, lang)
         en_url = lang_url(page, "en")
     else:
-        this_url = f"/{page}"
-        en_url = f"/{page}"
+        this_url = "/"
+        en_url = "/"
     canonical = base + this_url.lstrip("/")
-    if page in TRANSLATED_PAGES:
+    if page in ROUTED_PAGES:
         hreflangs = [
             (code, base + lang_url(page, code).lstrip("/"))
             for code, _, _ in LANGS
@@ -238,9 +242,23 @@ def privacy():
     return render_info("privacy.html", "en", "privacy")
 
 
+@app.route("/<any(es, zh, fr, tr, id):lang>/privacy/")
+def privacy_lang(lang):
+    # Legal text stays English; header, footer and navigation render in
+    # the selected language so switching languages keeps the user here.
+    return render_info("privacy.html", lang, "privacy")
+
+
 @app.route("/terms")
 def terms():
     return render_info("terms.html", "en", "terms")
+
+
+@app.route("/<any(es, zh, fr, tr, id):lang>/terms/")
+def terms_lang(lang):
+    # Legal text stays English; header, footer and navigation render in
+    # the selected language so switching languages keeps the user here.
+    return render_info("terms.html", lang, "terms")
 
 
 @app.route("/about")

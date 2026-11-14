@@ -119,9 +119,77 @@ def page_not_found(e):
     parts = request.path.strip("/").split("/")
     if parts and parts[0] in TRANSLATIONS:
         lang = parts[0]
+    ctx = page_context(lang, "404")
+    # A 404 has no canonical page of its own: point at the homepage
+    # and offer no language alternates.
+    ctx["canonical"] = "https://twitter-7vlf.onrender.com/"
+    ctx["hreflangs"] = []
+    return render_template("404.html", **ctx), 404
+
+
+# Pages with a translated version in every language. Privacy and Terms
+# stay English-only: links to them fall back to the English page, and
+# the language switcher on those pages goes to the language homepages.
+TRANSLATED_PAGES = {"home", "about", "contact", "faq"}
+
+
+def lang_url(page, code):
+    """URL of `page` in language `code`, preserving the language prefix.
+
+    English info pages keep their existing slash-less URLs (/about);
+    language versions use a trailing slash (/zh/about/). Untranslated
+    pages fall back to the language homepage.
+    """
+    if page not in TRANSLATED_PAGES:
+        return "/" if code == "en" else f"/{code}/"
+    if page == "home":
+        return "/" if code == "en" else f"/{code}/"
+    return f"/{page}" if code == "en" else f"/{code}/{page}/"
+
+
+def page_context(lang, page):
+    """Shared template context for every page: translations, the current
+    language, and every internal URL in that language."""
     t = TRANSLATIONS[lang]
-    home = "/" if lang == "en" else f"/{lang}/"
-    return render_template("404.html", t=t, lang=lang, home=home), 404
+    base = "https://twitter-7vlf.onrender.com/"
+    this_url = lang_url(page, lang)
+    canonical = base + this_url.lstrip("/")
+    if page in TRANSLATED_PAGES:
+        hreflangs = [
+            (code, base + lang_url(page, code).lstrip("/"))
+            for code, _, _ in LANGS
+        ]
+    else:
+        hreflangs = [("en", canonical)]
+    return {
+        "t": t,
+        "lang": lang,
+        "langs": LANGS,
+        "lang_urls": {code: lang_url(page, code) for code, _, _ in LANGS},
+        "home": lang_url("home", lang),
+        "about_url": lang_url("about", lang),
+        "contact_url": lang_url("contact", lang),
+        "faq_url": lang_url("faq", lang),
+        "canonical": canonical,
+        "hreflangs": hreflangs,
+        "x_default": base + lang_url(page, "en").lstrip("/"),
+    }
+
+
+def render_info(template, lang, page):
+    """Render an info page (about/contact/faq/privacy/terms) in `lang`."""
+    ctx = page_context(lang, page)
+    if page == "faq":
+        ctx["faq_json"] = json.dumps({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": [
+                {"@type": "Question", "name": f["q"],
+                 "acceptedAnswer": {"@type": "Answer", "text": f["a"]}}
+                for f in ctx["t"]["faqs"]
+            ],
+        }, ensure_ascii=False)
+    return render_template(template, **ctx)
 
 
 @app.route("/favicon.ico")
@@ -160,22 +228,42 @@ def indexnow_key():
 
 @app.route("/privacy")
 def privacy():
-    return render_template("privacy.html")
+    return render_info("privacy.html", "en", "privacy")
 
 
 @app.route("/terms")
 def terms():
-    return render_template("terms.html")
+    return render_info("terms.html", "en", "terms")
 
 
 @app.route("/about")
 def about():
-    return render_template("about.html")
+    return render_info("about.html", "en", "about")
 
 
 @app.route("/contact")
 def contact():
-    return render_template("contact.html")
+    return render_info("contact.html", "en", "contact")
+
+
+@app.route("/faq")
+def faq():
+    return render_info("faq.html", "en", "faq")
+
+
+@app.route("/<any(es, zh, fr, tr, id):lang>/about/")
+def about_lang(lang):
+    return render_info("about.html", lang, "about")
+
+
+@app.route("/<any(es, zh, fr, tr, id):lang>/contact/")
+def contact_lang(lang):
+    return render_info("contact.html", lang, "contact")
+
+
+@app.route("/<any(es, zh, fr, tr, id):lang>/faq/")
+def faq_lang(lang):
+    return render_info("faq.html", lang, "faq")
 
 
 @app.route("/")
@@ -230,6 +318,10 @@ def render_home(lang):
         t=t,
         lang=lang,
         langs=LANGS,
+        lang_urls={code: lang_url("home", code) for code, _, _ in LANGS},
+        about_url=lang_url("about", lang),
+        contact_url=lang_url("contact", lang),
+        faq_url=lang_url("faq", lang),
         canonical=canonical,
         hreflangs=hreflangs,
         faq_json=faq_json,

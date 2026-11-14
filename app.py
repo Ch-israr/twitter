@@ -152,7 +152,14 @@ def page_context(lang, page):
     language, and every internal URL in that language."""
     t = TRANSLATIONS[lang]
     base = "https://twitter-7vlf.onrender.com/"
-    this_url = lang_url(page, lang)
+    # English-only pages (privacy, terms) keep their own URL for canonical /
+    # hreflang purposes; lang_url() would fall back to the homepage for them.
+    if page in TRANSLATED_PAGES:
+        this_url = lang_url(page, lang)
+        en_url = lang_url(page, "en")
+    else:
+        this_url = f"/{page}"
+        en_url = f"/{page}"
     canonical = base + this_url.lstrip("/")
     if page in TRANSLATED_PAGES:
         hreflangs = [
@@ -172,7 +179,7 @@ def page_context(lang, page):
         "faq_url": lang_url("faq", lang),
         "canonical": canonical,
         "hreflangs": hreflangs,
-        "x_default": base + lang_url(page, "en").lstrip("/"),
+        "x_default": base + en_url.lstrip("/"),
     }
 
 

@@ -149,11 +149,11 @@ def llms_full_txt():
     return send_from_directory(app.static_folder, "llms-full.txt", mimetype="text/plain")
 
 
-@app.route("/twitterdown-1db1d3abcacba217f162a3ad.txt")
+@app.route("/cfe4e974576948388be18b4402adf3e1.txt")
 def indexnow_key():
     return send_from_directory(
         app.static_folder,
-        "twitterdown-1db1d3abcacba217f162a3ad.txt",
+        "cfe4e974576948388be18b4402adf3e1.txt",
         mimetype="text/plain",
     )
 

@@ -52,13 +52,13 @@
           <a href="#how-it-works">{{ t.nav_how }}</a>
           <a href="#features">{{ t.nav_features }}</a>
           <a href="#faq">{{ t.nav_faq }}</a>
-          <a href="/about">{{ t.nav_about }}</a>
+          <a href="{{ about_url }}">{{ t.nav_about }}</a>
         </nav>
         <div class="lang-dropdown">
           <button class="lang-btn" type="button" aria-haspopup="true" aria-expanded="false">{{ lang | upper }} ▾</button>
           <div class="lang-menu">
             {% for code, name, locale in langs %}
-            <a href="{{ '/' if code == 'en' else '/' + code + '/' }}"{% if code == lang %} class="active"{% endif %}><span class="lang-code">{{ code | upper }}</span>{{ name }}</a>
+            <a href="{{ lang_urls[code] }}"{% if code == lang %} class="active"{% endif %}><span class="lang-code">{{ code | upper }}</span>{{ name }}</a>
             {% endfor %}
           </div>
         </div>
@@ -150,10 +150,10 @@
       <div class="footer-col">
         <h3>{{ t.company_h }}</h3>
         <ul>
-          <li><a href="/about">{{ t.link_about }}</a></li>
+          <li><a href="{{ about_url }}">{{ t.link_about }}</a></li>
           <li><a href="/privacy">{{ t.link_privacy }}</a></li>
           <li><a href="/terms">{{ t.link_terms }}</a></li>
-          <li><a href="/contact">{{ t.link_contact }}</a></li>
+          <li><a href="{{ contact_url }}">{{ t.link_contact }}</a></li>
         </ul>
       </div>
       <div class="footer-col">

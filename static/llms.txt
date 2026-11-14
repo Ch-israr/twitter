@@ -41,11 +41,13 @@
 - [Home — download a video](https://twitter-7vlf.onrender.com/)
 - [How it works](https://twitter-7vlf.onrender.com/#how-it-works)
 - [Features](https://twitter-7vlf.onrender.com/#features)
-- [FAQ](https://twitter-7vlf.onrender.com/#faq)
+- [FAQ](https://twitter-7vlf.onrender.com/faq)
 - [About](https://twitter-7vlf.onrender.com/about)
 - [Privacy Policy](https://twitter-7vlf.onrender.com/privacy)
 - [Terms of Service](https://twitter-7vlf.onrender.com/terms)
 - [Contact](https://twitter-7vlf.onrender.com/contact)
+
+About, Contact and FAQ are also available in every language — for example /es/about/, /zh/faq/ and /id/contact/. Navigation keeps the selected language on every page; Privacy and Terms are English-only.
 
 ## Languages
 

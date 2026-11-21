@@ -198,20 +198,6 @@ button:disabled { opacity: 0.6; cursor: wait; }
 #downloadBtn { background: #007bff; color: #fff; font-weight: bold; }
 #downloadBtn:hover { background: #0056b3; }
 
-/* Contact form */
-.contact-form { margin-top: 24px; display: flex; flex-direction: column; gap: 14px; }
-.contact-label { display: flex; flex-direction: column; gap: 6px; font-weight: 600; font-size: 15px; }
-.contact-label input, .contact-label textarea {
-  flex: none; width: 100%; box-sizing: border-box;
-  border: 1px solid #ddd; background: #f8f8f8;
-  font-family: inherit; font-size: 15px; font-weight: 400;
-}
-.contact-label textarea { resize: vertical; min-height: 130px; }
-.contact-hp { display: none; }
-.contact-form button { background: #007bff; color: #fff; font-weight: bold; align-self: flex-start; }
-.contact-form button:hover { background: #0056b3; }
-.contact-status { margin: 0; font-size: 15px; }
-
 #status { margin-top: 25px; font-size: 16px; min-height: 24px; }
 #status.error { color: #c00; }
 

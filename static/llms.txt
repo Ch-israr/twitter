@@ -4,7 +4,7 @@
 
 ## What it is
 
-- Website: https://twitter-7vlf.onrender.com/
+- Website: https://twitterdown.app/
 - TwitterDown downloads videos and GIFs from public X (Twitter) posts as MP4. It is a free Twitter video downloader and X video downloader, also known as a tweet downloader and Twitter video saver.
 - Cost: free. No account, no sign-up, and no X account needed. No personal details are asked for.
 - Not affiliated with, endorsed by, or connected to X Corp. or Twitter, Inc.
@@ -38,27 +38,27 @@
 
 ## Pages
 
-- [Home — download a video](https://twitter-7vlf.onrender.com/)
-- [How it works](https://twitter-7vlf.onrender.com/#how-it-works)
-- [Features](https://twitter-7vlf.onrender.com/#features)
-- [FAQ](https://twitter-7vlf.onrender.com/faq)
-- [About](https://twitter-7vlf.onrender.com/about)
-- [Privacy Policy](https://twitter-7vlf.onrender.com/privacy)
-- [Terms of Service](https://twitter-7vlf.onrender.com/terms)
-- [Contact](https://twitter-7vlf.onrender.com/contact)
+- [Home — download a video](https://twitterdown.app/)
+- [How it works](https://twitterdown.app/#how-it-works)
+- [Features](https://twitterdown.app/#features)
+- [FAQ](https://twitterdown.app/faq)
+- [About](https://twitterdown.app/about)
+- [Privacy Policy](https://twitterdown.app/privacy)
+- [Terms of Service](https://twitterdown.app/terms)
+- [Contact](https://twitterdown.app/contact)
 
 About, Contact and FAQ are also available in every language — for example /es/about/, /zh/faq/ and /id/contact/. Privacy and Terms have a page in every language too (for example /es/privacy/ and /zh/terms/); their legal text stays in English while the navigation around it uses the selected language. Navigation keeps the selected language on every page.
 
 ## Languages
 
-- [English](https://twitter-7vlf.onrender.com/)
-- [Español — descargar videos de Twitter](https://twitter-7vlf.onrender.com/es/)
-- [中文 — 推特视频下载](https://twitter-7vlf.onrender.com/zh/)
-- [Français — télécharger des vidéos Twitter](https://twitter-7vlf.onrender.com/fr/)
-- [Türkçe — Twitter video indir](https://twitter-7vlf.onrender.com/tr/)
-- [Bahasa Indonesia — download video dari Twitter](https://twitter-7vlf.onrender.com/id/)
+- [English](https://twitterdown.app/)
+- [Español — descargar videos de Twitter](https://twitterdown.app/es/)
+- [中文 — 推特视频下载](https://twitterdown.app/zh/)
+- [Français — télécharger des vidéos Twitter](https://twitterdown.app/fr/)
+- [Türkçe — Twitter video indir](https://twitterdown.app/tr/)
+- [Bahasa Indonesia — download video dari Twitter](https://twitterdown.app/id/)
 
 ## More documentation
 
-- [Full documentation — llms-full.txt](https://twitter-7vlf.onrender.com/llms-full.txt)
-- [Sitemap](https://twitter-7vlf.onrender.com/sitemap.xml)
+- [Full documentation — llms-full.txt](https://twitterdown.app/llms-full.txt)
+- [Sitemap](https://twitterdown.app/sitemap.xml)

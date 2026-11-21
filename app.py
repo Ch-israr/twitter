@@ -9,6 +9,10 @@ import uuid
 
 app = Flask(__name__)
 
+# Canonical home of the site. Every canonical URL, hreflang alternate,
+# Open Graph URL, JSON-LD URL and sitemap entry is built from this.
+SITE_URL = "https://twitterdown.app"
+
 DOWNLOAD_FOLDER = "downloads"
 os.makedirs(DOWNLOAD_FOLDER, exist_ok=True)
 
@@ -128,7 +132,7 @@ def page_not_found(e):
     ctx = page_context(lang, "404")
     # A 404 has no canonical page of its own: point at the homepage
     # and offer no language alternates.
-    ctx["canonical"] = "https://twitter-7vlf.onrender.com/"
+    ctx["canonical"] = SITE_URL + "/"
     ctx["hreflangs"] = []
     return render_template("404.html", **ctx), 404
 
@@ -161,7 +165,7 @@ def page_context(lang, page):
     """Shared template context for every page: translations, the current
     language, and every internal URL in that language."""
     t = TRANSLATIONS[lang]
-    base = "https://twitter-7vlf.onrender.com/"
+    base = SITE_URL + "/"
     # Pages with a per-language URL keep their own URL for canonical /
     # hreflang purposes; pages without one fall back to the homepage.
     if page in ROUTED_PAGES:
@@ -315,7 +319,7 @@ def render_home(lang):
     what the visitor sees.
     """
     t = TRANSLATIONS[lang]
-    base = "https://twitter-7vlf.onrender.com/"
+    base = SITE_URL + "/"
     canonical = base if lang == "en" else base + lang + "/"
     hreflangs = [
         ("en", base),

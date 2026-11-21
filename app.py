@@ -5,13 +5,32 @@ from translations import TRANSLATIONS, LANGS
 import yt_dlp
 import json
 import os
+import re
+import smtplib
+import time
 import uuid
+from email.message import EmailMessage
 
 app = Flask(__name__)
 
 # Canonical home of the site. Every canonical URL, hreflang alternate,
 # Open Graph URL, JSON-LD URL and sitemap entry is built from this.
 SITE_URL = "https://twitterdown.app"
+
+# Contact form mail. Sending runs through the Gmail account in
+# MAIL_USERNAME with a Gmail app password in MAIL_PASSWORD (never in
+# code — both come from environment variables on Render). The form
+# stays visible when mail is not configured, but submits then fail
+# with a clear error instead of silently dropping messages.
+CONTACT_TO = os.environ.get("CONTACT_TO", "contact@twitterdown.app")
+MAIL_HOST = os.environ.get("MAIL_HOST", "smtp.gmail.com")
+MAIL_PORT = int(os.environ.get("MAIL_PORT", "587"))
+MAIL_USERNAME = os.environ.get("MAIL_USERNAME", "")
+MAIL_PASSWORD = os.environ.get("MAIL_PASSWORD", "")
+EMAIL_RE = re.compile(r"^[^\s@]+@[^\s@]+\.[^\s@]+$")
+CONTACT_LIMIT = 5          # max submits per IP per hour
+CONTACT_WINDOW_S = 3600
+_contact_hits = {}         # ip -> [timestamps of recent submits]
 
 DOWNLOAD_FOLDER = "downloads"
 os.makedirs(DOWNLOAD_FOLDER, exist_ok=True)
@@ -276,8 +295,53 @@ def about():
     return render_info("about.html", "en", "about")
 
 
-@app.route("/contact")
+def handle_contact_post():
+    """Accept the contact form as JSON, validate it, and email it to
+    CONTACT_TO via SMTP. Returns (json, status)."""
+    data = request.get_json(silent=True) or {}
+    # Honeypot: bots fill the hidden "website" field; humans never see
+    # it. Pretend success so bots can't tell they were caught.
+    if (data.get("website") or "").strip():
+        return jsonify({"ok": True}), 200
+    name = (data.get("name") or "").strip()
+    email = (data.get("email") or "").strip()
+    message = (data.get("message") or "").strip()
+    if not name or not email or not message:
+        return jsonify({"error": "missing fields"}), 400
+    if len(name) > 100 or len(email) > 200 or len(message) > 5000:
+        return jsonify({"error": "field too long"}), 400
+    if not EMAIL_RE.match(email):
+        return jsonify({"error": "invalid email"}), 400
+    ip = request.headers.get(
+        "X-Forwarded-For", request.remote_addr or "?").split(",")[0].strip()
+    now = time.time()
+    hits = [t for t in _contact_hits.get(ip, []) if now - t < CONTACT_WINDOW_S]
+    if len(hits) >= CONTACT_LIMIT:
+        return jsonify({"error": "too many messages"}), 429
+    hits.append(now)
+    _contact_hits[ip] = hits
+    if not MAIL_USERNAME or not MAIL_PASSWORD:
+        return jsonify({"error": "mail not configured"}), 503
+    msg = EmailMessage()
+    msg["Subject"] = "TwitterDown contact: " + name
+    msg["From"] = MAIL_USERNAME
+    msg["To"] = CONTACT_TO
+    msg["Reply-To"] = email
+    msg.set_content("Name: " + name + "\nEmail: " + email + "\n\n" + message)
+    try:
+        with smtplib.SMTP(MAIL_HOST, MAIL_PORT, timeout=30) as smtp:
+            smtp.starttls()
+            smtp.login(MAIL_USERNAME, MAIL_PASSWORD)
+            smtp.send_message(msg)
+    except Exception:
+        return jsonify({"error": "send failed"}), 502
+    return jsonify({"ok": True}), 200
+
+
+@app.route("/contact", methods=["GET", "POST"])
 def contact():
+    if request.method == "POST":
+        return handle_contact_post()
     return render_info("contact.html", "en", "contact")
 
 
@@ -291,8 +355,10 @@ def about_lang(lang):
     return render_info("about.html", lang, "about")
 
 
-@app.route("/<any(es, zh, fr, tr, id):lang>/contact/")
+@app.route("/<any(es, zh, fr, tr, id):lang>/contact/", methods=["GET", "POST"])
 def contact_lang(lang):
+    if request.method == "POST":
+        return handle_contact_post()
     return render_info("contact.html", lang, "contact")
 
 

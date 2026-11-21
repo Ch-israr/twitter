@@ -14,6 +14,54 @@
         <p>{{ t.contact_p1 }}</p>
         <p>{{ t.contact_p2 }}</p>
         <p>{{ t.contact_p3 }}</p>
+        <form id="contact-form" class="contact-form" method="post" action="{{ canonical }}" novalidate>
+          <label class="contact-label">{{ t.contact_form_name }}
+            <input type="text" name="name" maxlength="100" required autocomplete="name">
+          </label>
+          <label class="contact-label">{{ t.contact_form_email }}
+            <input type="email" name="email" maxlength="200" required autocomplete="email">
+          </label>
+          <label class="contact-label">{{ t.contact_form_message }}
+            <textarea name="message" rows="6" maxlength="5000" required></textarea>
+          </label>
+          <input type="text" name="website" class="contact-hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+          <button type="submit" id="contact-submit">{{ t.contact_form_send }}</button>
+          <p id="contact-status" class="contact-status" role="status"></p>
+        </form>
+        <script>
+        (function () {
+          var form = document.getElementById("contact-form");
+          var status = document.getElementById("contact-status");
+          var submit = document.getElementById("contact-submit");
+          var msgs = {
+            sending: {{ t.contact_form_sending | tojson }},
+            success: {{ t.contact_form_success | tojson }},
+            error: {{ t.contact_form_error | tojson }},
+            required: {{ t.contact_form_required | tojson }},
+            invalidEmail: {{ t.contact_form_invalid_email | tojson }}
+          };
+          form.addEventListener("submit", function (e) {
+            e.preventDefault();
+            var name = form.name.value.trim();
+            var email = form.email.value.trim();
+            var message = form.message.value.trim();
+            if (!name || !email || !message) { status.textContent = msgs.required; return; }
+            if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { status.textContent = msgs.invalidEmail; return; }
+            submit.disabled = true;
+            status.textContent = msgs.sending;
+            fetch(form.action, {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({ name: name, email: email, message: message, website: form.website.value })
+            }).then(function (r) { return r.json().then(function (d) { return { ok: r.ok, d: d }; }); })
+            .then(function (res) {
+              submit.disabled = false;
+              if (res.ok && res.d.ok) { status.textContent = msgs.success; form.reset(); }
+              else { status.textContent = msgs.error; }
+            }).catch(function () { submit.disabled = false; status.textContent = msgs.error; });
+          });
+        })();
+        </script>
       </div>
     </section>
 {% endblock %}

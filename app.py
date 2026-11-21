@@ -320,6 +320,9 @@ def extract_photos(url):
         photos.append({
             "label": f"Image {len(photos) + 1}",
             "url": f"https://pbs.twimg.com/media/{media_id}?format={ext}&name=orig",
+            # Lighter preview for the results page (the download itself is
+            # always the original, fetched through the token link).
+            "preview": f"https://pbs.twimg.com/media/{media_id}?format={ext}&name=large",
             "ext": ext,
         })
         if len(photos) >= 4:
@@ -665,7 +668,7 @@ def _photos_response(url):
                                     mime=_IMAGE_MIME[p["ext"]], ext=p["ext"])
         if token is None:
             return jsonify({"error": "The service is busy. Please try again in a minute."}), 429
-        out.append({"label": p["label"], "ext": p["ext"], "token": token})
+        out.append({"label": p["label"], "ext": p["ext"], "preview": p["preview"], "token": token})
     return jsonify({
         "videos": [],
         "images": out,

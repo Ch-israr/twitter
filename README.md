@@ -1,14 +1,14 @@
-# TwitterDown — Twitter / X Video Downloader
+# TwitterDown — Twitter / X Video & Photo Downloader
 
-Download videos and GIFs from X (Twitter) as MP4. Paste a link, pick a quality, save the file. Fast, free, no watermark, no sign-up.
+Download videos, GIFs and photos from X (Twitter). Videos save as MP4 — paste a link, pick a quality, save the file. Photos save at original quality as JPG or PNG — one button per photo, up to four per post. Fast, free, no watermark, no sign-up.
 
 **Live site:** https://twitterdown.app
 
 ## How it works
 
 1. Paste a link from `x.com` or `twitter.com` into the box.
-2. The server reads the tweet's video links with [yt-dlp](https://github.com/yt-dlp/yt-dlp) (metadata only — nothing is downloaded to the server).
-3. You get up to five download buttons (for example 480x270, 1280x720, 1920x1080, 3840x2160) served through TwitterDown as real file downloads, plus a thumbnail preview.
+2. The server reads the tweet's video links with [yt-dlp](https://github.com/yt-dlp/yt-dlp) (metadata only — nothing is downloaded to the server). For photo posts, yt-dlp gives up before returning any info, so the server reads the photos from X's public syndication endpoint instead (no auth).
+3. You get up to five download buttons for videos (for example 480x270, 1280x720, 1920x1080, 3840x2160) served through TwitterDown as real file downloads, plus a thumbnail preview — or one download button per photo (up to four), each with its own preview, at original quality.
 
 If no direct link is found for a tweet, the server falls back to downloading the video itself and serving the file.
 

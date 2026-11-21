@@ -1,12 +1,12 @@
 # TwitterDown — Full Documentation
 
-> TwitterDown is a free online Twitter video downloader. Download Twitter videos online free — paste a link from x.com or twitter.com, choose a quality, and save the video or GIF as MP4 in HD or 4K, on iPhone, Android or PC. No account, no sign-up, no watermark. X videos only.
+> TwitterDown is a free online Twitter video and photo downloader. Download Twitter videos and photos online free — paste a link from x.com or twitter.com, choose a quality for videos, and save the video or GIF as MP4 in HD or 4K, or save photos as JPG, on iPhone, Android or PC. No account, no sign-up, no watermark. X videos and photos only.
 
 ## Overview
 
 - Website: https://twitterdown.app/
-- TwitterDown is a free web tool for downloading videos and GIFs from public posts on X (Twitter). It is a Twitter video downloader and X video downloader, also described as a tweet downloader and Twitter video saver.
-- To download a Twitter video, you paste the link to a post, pick a quality, and save the file. There is nothing to install and no account to create.
+- TwitterDown is a free web tool for downloading videos, GIFs and photos from public posts on X (Twitter). It is a Twitter video and photo downloader and X video and photo downloader, also described as a tweet downloader and Twitter video saver.
+- To download a Twitter video, you paste the link to a post, pick a quality, and save the file. To download photos, you paste the link and tap the photo you want — each photo saves at original quality. There is nothing to install and no account to create.
 - Cost: free. There are no fees and no limits on the number of links you try.
 - TwitterDown is not affiliated with, endorsed by, or connected to X Corp., Twitter, Inc., or X (formerly Twitter). X, Twitter, and their logos are trademarks of X Corp.
 
@@ -38,62 +38,63 @@
 ### Free, no account, no watermark
 
 - Free to use, with no sign-up.
-- No watermark is added. The video downloads exactly as it was posted.
-- You don't need an X account. You only need the link to a public post that contains a video.
+- No watermark is added. Videos and photos download exactly as they were posted.
+- You don't need an X account. You only need the link to a public post that contains a video or photos.
 
 ## How the downloader works
 
 1. You paste the link to a post on X.
-2. TwitterDown reads the post and lists the video formats X provides for it, as direct MP4 links from X's video servers (video.twimg.com).
-3. You pick a quality. TwitterDown streams the file to you as a download, so it saves to your device instead of opening in a video player. Direct video links from X's servers can be blocked (HTTP 403) in some browsers or networks; downloading through TwitterDown works around that.
+2. TwitterDown reads the post and lists the video formats X provides for it, as direct MP4 links from X's video servers (video.twimg.com) — or, for a photo post, the photos it contains, as direct image links from X's image servers (pbs.twimg.com).
+3. You pick a quality for a video, or tap the photo you want. TwitterDown streams the file to you as a download, so it saves to your device instead of opening in a video player. Direct links from X's servers can be blocked (HTTP 403) in some browsers or networks; downloading through TwitterDown works around that.
 4. If no direct link is available for a post, TwitterDown downloads the file to its own server first and then serves it to you as a download.
-5. TwitterDown does not host videos itself. Videos come from X's servers, and TwitterDown passes them through to you.
+5. TwitterDown does not host videos or photos itself. Videos and photos come from X's servers, and TwitterDown passes them through to you.
 
 ## How to use TwitterDown
 
 ### Basic steps
 
-1. Open the post on X (Twitter) that contains the video or GIF.
+1. Open the post on X (Twitter) that contains the video, GIF or photos.
 2. Copy its link: tap Share, then Copy link.
 3. Open https://twitterdown.app/ and paste the link into the box at the top of the page.
 4. Tap Download.
-5. Pick a quality (for example 720p for the best quality, or a smaller size to save space) and save the file.
+5. Pick a quality for a video (for example 720p, or a smaller size to save space), or tap the photo you want, and save the file.
 
 ### On iPhone
 
 1. Open TwitterDown in Safari.
-2. Paste the link to the post, tap Download, then pick a quality and save the file.
+2. Paste the link to the post, tap Download, then pick a quality for a video — or tap the photo you want — and save the file.
 3. The file goes to Downloads in the Files app. No app to install and no account needed.
 
 ### On Android
 
 1. Open TwitterDown in your phone's browser.
-2. Paste the link, tap Download, pick a quality, and save the file to your Downloads folder.
+2. Paste the link, tap Download, pick a quality for a video — or tap the photo you want — and save the file to your Downloads folder.
 
 ### On PC
 
 1. Open TwitterDown in your browser.
-2. Copy the link from the X post and paste it into the box (Ctrl+V), tap Download, pick a quality, and save the file.
+2. Copy the link from the X post and paste it into the box (Ctrl+V), tap Download, pick a quality for a video — or tap the photo you want — and save the file.
 
 ## Supported content
 
 - Public posts on x.com and twitter.com that contain a video.
 - Public posts on x.com and twitter.com that contain a GIF (downloaded as MP4).
+- Public posts on x.com and twitter.com that contain photos (up to four per post, each downloaded at original quality as JPG or PNG).
 - Video qualities of 320p, 480p, 720p, 1080p, or 4K, depending on what the original post provides.
 
 ## Unsupported content
 
 - Any site other than X: TikTok, YouTube, Instagram, Facebook, and all other sites are not supported.
 - Private posts that only approved followers can view.
-- Deleted posts, or posts that have no video or GIF.
+- Deleted posts, or posts that have no video, GIF or photo.
 - Downloading a whole account, profile, or timeline. Each download is one post at a time.
-- Content you do not have the right to use. Only download videos you are allowed to use, and respect the original creator's rights.
+- Content you do not have the right to use. Only download videos and photos you are allowed to use, and respect the original creator's rights.
 
 ## Privacy and data handling
 
 - No account and no sign-up. TwitterDown does not ask for your name, email, or any personal details.
 - No X login is needed. You never enter your X password anywhere on this site.
-- TwitterDown does not host videos. Videos are fetched from X's servers and passed through to your device; the download buttons serve the file to you directly.
+- TwitterDown does not host videos or photos. Videos and photos are fetched from X's servers and passed through to your device; the download buttons serve the file to you directly.
 - The site uses Google Tag Manager (analytics), as described in its Privacy Policy.
 - For the full details, see the [Privacy Policy](https://twitterdown.app/privacy) and the [Terms of Service](https://twitterdown.app/terms).
 
@@ -105,7 +106,7 @@ Yes. TwitterDown is free to use, with no sign-up and no account needed.
 
 ### Do I need an X / Twitter account?
 
-No. You only need the link to a public post that contains a video.
+No. You only need the link to a public post that contains a video or photos.
 
 ### What quality will the video be?
 
@@ -115,9 +116,13 @@ You get up to five qualities to choose from — for example 480p, 720p, 1080p an
 
 Yes. On X, GIFs are short videos, so they download as MP4 just like videos.
 
+### Can I download photos from X?
+
+Yes. Paste the link to a post with photos and you will see one download button per photo — each photo saves at its original quality as JPG or PNG. Posts can have up to four photos, and you can download just the ones you want.
+
 ### Does TwitterDown work with TikTok, YouTube, or Instagram?
 
-No. TwitterDown is for X only — x.com and twitter.com video links only.
+No. TwitterDown is for X only — x.com and twitter.com video and photo links only.
 
 ### Can I download videos from private posts?
 
@@ -129,7 +134,7 @@ Only download videos you have the right to use, and respect the original creator
 
 ### How to download Twitter videos?
 
-Copy the link to the post on X, paste it into the box at the top of this page, tap Download, then pick a quality and save the file. It works on iPhone, Android, and PC — no app and no account needed.
+Copy the link to the post on X, paste it into the box at the top of this page, tap Download, then pick a quality for a video — or tap the photo you want — and save the file. It works on iPhone, Android, and PC — no app and no account needed.
 
 ### Can I save Twitter videos in HD?
 
@@ -137,11 +142,11 @@ Yes. TwitterDown offers up to five qualities, including HD and 4K when the origi
 
 ### Can I download a video from X without an account?
 
-Yes. You don't need an X account or a TwitterDown account. You only need the link to a public post that contains a video.
+Yes. You don't need an X account or a TwitterDown account. You only need the link to a public post that contains a video or photos.
 
 ### Can I download Twitter videos on iPhone?
 
-Yes. Open TwitterDown in Safari on your iPhone, paste the link to the post, tap Download, then pick a quality and save the file — it goes to your Downloads in the Files app. No app to install and no account needed.
+Yes. Open TwitterDown in Safari on your iPhone, paste the link to the post, tap Download, then pick a quality for a video — or tap the photo you want — and save the file — it goes to your Downloads in the Files app. No app to install and no account needed.
 
 ### Can I download Twitter videos in 4K?
 
@@ -161,9 +166,9 @@ You don't need to convert anything — TwitterDown saves Twitter videos directly
 
 The link you pasted is not from x.com or twitter.com. Copy the link from the post on X itself (Share → Copy link) and try again. Links from TikTok, YouTube, Instagram, or any other site do not work.
 
-### "Could not download that X video"
+### "Could not download that post"
 
-The post may be private, deleted, or contain no video. Check that the post is public and actually contains a video or GIF, then copy the link again from the post and try once more.
+The post may be private, deleted, or contain no video or photo. Check that the post is public and actually contains a video, GIF or photo, then copy the link again from the post and try once more.
 
 ### The video opens in a player instead of downloading
 
@@ -183,14 +188,14 @@ The site runs on a free hosting plan, so after a period with no visitors it can 
 
 ### No video was found for the link
 
-The link may point to a text-only or image-only post, or to a profile page instead of a single post. Open the post itself and copy its link.
+The link may point to a text-only post, or to a profile page instead of a single post. Open the post itself and copy its link.
 
 ## Technical limitations
 
 - X only: only x.com and twitter.com links work.
 - Public posts only: private and deleted posts cannot be downloaded.
 - One post per download: there is no bulk download and no account or timeline download.
-- Video only: the post must contain a video or GIF.
+- Videos, GIFs and photos: the post must contain a video, GIF or photo.
 - Quality depends on the original post: 4K and 1080p appear only when the original was uploaded at that quality.
 - Web only: there is no mobile app and no browser extension.
 - Download speed depends on your connection and on X's servers. Very large files take longer.
@@ -198,7 +203,7 @@ The link may point to a text-only or image-only post, or to a profile page inste
 
 ## Pages
 
-- [Home — download a video](https://twitterdown.app/)
+- [Home — download videos and photos](https://twitterdown.app/)
 - [How it works](https://twitterdown.app/#how-it-works)
 - [Features](https://twitterdown.app/#features)
 - [FAQ](https://twitterdown.app/faq)
@@ -212,11 +217,11 @@ About, Contact and FAQ are also available in every language — for example /es/
 ## Languages
 
 - [English](https://twitterdown.app/)
-- [Español — descargar videos de Twitter](https://twitterdown.app/es/)
-- [中文 — 推特视频下载](https://twitterdown.app/zh/)
-- [Français — télécharger des vidéos Twitter](https://twitterdown.app/fr/)
-- [Türkçe — Twitter video indir](https://twitterdown.app/tr/)
-- [Bahasa Indonesia — download video dari Twitter](https://twitterdown.app/id/)
+- [Español — descargar videos y fotos de Twitter](https://twitterdown.app/es/)
+- [中文 — 推特视频和图片下载](https://twitterdown.app/zh/)
+- [Français — télécharger des vidéos et photos Twitter](https://twitterdown.app/fr/)
+- [Türkçe — Twitter video ve fotoğraf indir](https://twitterdown.app/tr/)
+- [Bahasa Indonesia — download video dan foto dari Twitter](https://twitterdown.app/id/)
 
 ## Related files
 

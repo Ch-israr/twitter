@@ -1,44 +1,44 @@
 # TwitterDown
 
-> TwitterDown is a free online Twitter video downloader. Download Twitter videos online free — paste a link from x.com or twitter.com, choose a quality, and save the video or GIF as MP4 in HD or 4K, on iPhone, Android or PC. No account, no sign-up, no watermark. X videos only.
+> TwitterDown is a free online Twitter video and photo downloader. Download Twitter videos and photos online free — paste a link from x.com or twitter.com, choose a quality for videos, and save the video or GIF as MP4 in HD or 4K, or save photos as JPG, on iPhone, Android or PC. No account, no sign-up, no watermark. X videos and photos only.
 
 ## What it is
 
 - Website: https://twitterdown.app/
-- TwitterDown downloads videos and GIFs from public X (Twitter) posts as MP4. It is a free Twitter video downloader and X video downloader, also known as a tweet downloader and Twitter video saver.
+- TwitterDown downloads videos, GIFs and photos from public X (Twitter) posts. Videos save as MP4, photos at original quality as JPG or PNG. It is a free Twitter video and photo downloader and X video and photo downloader, also known as a tweet downloader and Twitter video saver.
 - Cost: free. No account, no sign-up, and no X account needed. No personal details are asked for.
 - Not affiliated with, endorsed by, or connected to X Corp. or Twitter, Inc.
 
 ## Features
 
 - Paste an X link and get download links in seconds.
-- Up to five video qualities per post, including HD and 4K when the original post has it, plus smaller sizes to save space.
+- Up to five video qualities per post, including HD and 4K when the original post has it, plus smaller sizes to save space. Photos have no quality choice — each photo downloads at original quality, one button per photo, up to four per post.
 - Videos and GIFs save as MP4. GIFs on X are short videos, so they download as MP4 too.
-- No watermark added — the video downloads exactly as posted.
+- No watermark added — videos and photos download exactly as posted.
 - Downloads are served through TwitterDown as real file downloads, so the file saves to your device instead of opening in a video player.
 - Works in any browser on iPhone (Safari), Android, PC, and tablet. No app to install.
 - Free, with no limits on the number of links you try.
 
 ## How to use
 
-1. Copy the link to a post on X that contains a video or GIF (Share → Copy link).
+1. Copy the link to a post on X that contains a video, GIF or photos (Share → Copy link).
 2. Paste the link into the box on the homepage and tap Download.
-3. Pick a quality and save the file to your device.
+3. Pick a quality for a video, or tap the photo you want, and save the file to your device.
 
 ## Supported content
 
-- Public posts on x.com and twitter.com that contain a video or GIF.
+- Public posts on x.com and twitter.com that contain a video, GIF or photos.
 - Video qualities depend on the original post: 320p, 480p, 720p, 1080p, or 4K when available.
 
 ## Not supported
 
 - TikTok, YouTube, Instagram, or any site other than X.
-- Private posts, deleted posts, and posts with no video or GIF.
+- Private posts, deleted posts, and posts with no video, GIF or photo.
 - Downloading content you do not have the right to use.
 
 ## Pages
 
-- [Home — download a video](https://twitterdown.app/)
+- [Home — download videos and photos](https://twitterdown.app/)
 - [How it works](https://twitterdown.app/#how-it-works)
 - [Features](https://twitterdown.app/#features)
 - [FAQ](https://twitterdown.app/faq)
@@ -52,11 +52,11 @@ About, Contact and FAQ are also available in every language — for example /es/
 ## Languages
 
 - [English](https://twitterdown.app/)
-- [Español — descargar videos de Twitter](https://twitterdown.app/es/)
-- [中文 — 推特视频下载](https://twitterdown.app/zh/)
-- [Français — télécharger des vidéos Twitter](https://twitterdown.app/fr/)
-- [Türkçe — Twitter video indir](https://twitterdown.app/tr/)
-- [Bahasa Indonesia — download video dari Twitter](https://twitterdown.app/id/)
+- [Español — descargar videos y fotos de Twitter](https://twitterdown.app/es/)
+- [中文 — 推特视频和图片下载](https://twitterdown.app/zh/)
+- [Français — télécharger des vidéos et photos Twitter](https://twitterdown.app/fr/)
+- [Türkçe — Twitter video ve fotoğraf indir](https://twitterdown.app/tr/)
+- [Bahasa Indonesia — download video dan foto dari Twitter](https://twitterdown.app/id/)
 
 ## More documentation
 

@@ -5,6 +5,10 @@ from translations import TRANSLATIONS, LANGS
 import yt_dlp
 import json
 import os
+import re
+import secrets
+import tempfile
+import time
 import uuid
 
 app = Flask(__name__)
@@ -37,6 +41,137 @@ def is_x_url(url):
 # example a photo-only post). The raw yt-dlp error is technical and is
 # never shown to the user for this case.
 NO_VIDEO_MESSAGE = "No video could be found in this post — it may only contain photos, or it may be private or deleted."
+
+
+# ---------------------------------------------------------------------------
+# Download tokens + rate limiting (abuse protection)
+#
+# The browser never sees a raw video.twimg.com address any more: /download
+# hands back a short-lived, unguessable token per quality, and /get only
+# accepts that token. Tokens are small files in a shared temp directory,
+# so both gunicorn workers (same container, same filesystem) can mint and
+# read them. Nothing here is a secret that belongs in the repo — tokens
+# are random per download and expire after TOKEN_TTL_SECONDS.
+# ---------------------------------------------------------------------------
+TOKEN_TTL_SECONDS = 600  # 10 minutes: long enough to click, short enough to be useless later
+TOKEN_DIR = os.path.join(tempfile.gettempdir(), "twitterdown-tokens")
+TOKEN_MAX_FILES = 2000
+_TOKEN_RE = re.compile(r"^[A-Za-z0-9_-]{24,64}$")
+
+try:
+    os.makedirs(TOKEN_DIR, exist_ok=True)
+except Exception:
+    # If the temp dir cannot be created, token minting fails per request
+    # instead of crashing the app at import time.
+    pass
+
+
+def _sweep_expired_tokens(now=None):
+    """Delete expired token files. Best-effort; never raises."""
+    now = now if now is not None else int(time.time())
+    try:
+        names = os.listdir(TOKEN_DIR)
+    except Exception:
+        return
+    for name in names[:500]:  # bound the work per call
+        if not _TOKEN_RE.match(name):
+            continue
+        path = os.path.join(TOKEN_DIR, name)
+        try:
+            with open(path, "r", encoding="utf-8") as f:
+                payload = json.load(f)
+            if int(payload.get("exp") or 0) <= now:
+                os.unlink(path)
+        except Exception:
+            try:
+                os.unlink(path)
+            except Exception:
+                pass
+
+
+def mint_download_token(video_url, label):
+    """Create a short-lived token for one video URL. Returns the token
+    string, or None when the store is full (caller should answer 429)."""
+    now = int(time.time())
+    _sweep_expired_tokens(now)
+    try:
+        if len(os.listdir(TOKEN_DIR)) >= TOKEN_MAX_FILES:
+            return None
+    except Exception:
+        return None
+    token = secrets.token_urlsafe(24)
+    payload = {"url": video_url, "label": label, "exp": now + TOKEN_TTL_SECONDS}
+    tmp_path = os.path.join(TOKEN_DIR, f".tmp-{token}-{os.getpid()}")
+    path = os.path.join(TOKEN_DIR, token)
+    try:
+        with open(tmp_path, "w", encoding="utf-8") as f:
+            json.dump(payload, f)
+        os.replace(tmp_path, path)
+    except Exception:
+        try:
+            os.unlink(tmp_path)
+        except Exception:
+            pass
+        return None
+    return token
+
+
+def lookup_download_token(token):
+    """Return (video_url, label) for a valid token, ("expired", None) when
+    the token existed but is past its expiry, or (None, None) for an
+    unknown or malformed token. The token is used as a filename, so the
+    strict format check is what keeps path traversal out."""
+    if not token or not _TOKEN_RE.match(token):
+        return None, None
+    path = os.path.join(TOKEN_DIR, token)
+    try:
+        with open(path, "r", encoding="utf-8") as f:
+            payload = json.load(f)
+    except Exception:
+        return None, None
+    if int(payload.get("exp") or 0) <= int(time.time()):
+        try:
+            os.unlink(path)
+        except Exception:
+            pass
+        return "expired", None
+    url = payload.get("url") or ""
+    label = payload.get("label") or "video"
+    if not url:
+        return None, None
+    return url, label
+
+
+# Per-IP rate limits, in memory. Each gunicorn worker keeps its own
+# counters, so the effective limit is roughly 2x the nominal one with two
+# workers — still far below what a human does, and far above it is abuse.
+# Limits are per route so a burst of downloads cannot crowd out lookups
+# (or vice versa).
+_RATE_LIMITS = {}
+_RATE_LIMIT_MAX_KEYS = 2000
+
+
+def _client_ip():
+    forwarded = (request.headers.get("X-Forwarded-For") or "").split(",")[0].strip()
+    return forwarded or (request.remote_addr or "unknown")
+
+
+def _check_rate_limit(route, limit, window_seconds=60):
+    """True when this IP may proceed on `route`; False when over the limit."""
+    now = time.time()
+    key = (_client_ip(), route)
+    hits = _RATE_LIMITS.get(key)
+    if hits is None:
+        hits = _RATE_LIMITS[key] = []
+    hits[:] = [t for t in hits if t > now - window_seconds]
+    if len(hits) >= limit:
+        return False
+    hits.append(now)
+    if len(_RATE_LIMITS) > _RATE_LIMIT_MAX_KEYS:
+        for k in list(_RATE_LIMITS):
+            if not _RATE_LIMITS[k] or _RATE_LIMITS[k][-1] <= now - window_seconds:
+                del _RATE_LIMITS[k]
+    return True
 
 
 def extract_direct_videos(url):
@@ -366,6 +501,9 @@ def render_home(lang):
 
 @app.route("/download", methods=["POST"])
 def download():
+    if not _check_rate_limit("download", 10, 60):
+        return jsonify({"error": "Too many requests. Please wait a minute and try again."}), 429
+
     data = request.get_json(silent=True) or {}
     url = (data.get("url") or "").strip()
 
@@ -383,11 +521,26 @@ def download():
         return jsonify({"error": str(e)}), 500
 
     if videos:
+        # The browser gets a short-lived token per quality, never the raw
+        # video.twimg.com address — that address stays on the server until
+        # /get streams it. If minting fails the store is full; ask the
+        # visitor to retry rather than leaking the raw address.
+        out = []
+        for v in videos:
+            token = mint_download_token(v["url"], v["label"])
+            if token is None:
+                return jsonify({"error": "The service is busy. Please try again in a minute."}), 429
+            out.append({
+                "label": v["label"],
+                "width": v["width"],
+                "height": v["height"],
+                "token": token,
+            })
         return jsonify({
-            "videos": videos,
+            "videos": out,
             "thumbnail": thumbnail,
             "title": title,
-            "count": len(videos),
+            "count": len(out),
         })
 
     # No direct link found — fall back to downloading the file server-side.
@@ -404,15 +557,26 @@ def download():
 def stream_video():
     """Stream a video from X's CDN through this server as a file download.
 
-    Direct video.twimg.com links are blocked for some users' browsers or
-    networks (HTTP 403), and browsers open them in a player instead of
-    downloading. This route fetches the file on the server and hands it to
-    the user as an attachment, so the download always works. Only
-    video.twimg.com video links are allowed — this is not an open proxy.
-    The file is streamed in chunks and never saved to disk.
+    Accepts only a short-lived token minted by /download — the raw
+    video.twimg.com address is never exposed to the browser any more, so
+    download links cannot be hotlinked or forged, and they stop working
+    after 10 minutes. Direct video.twimg.com links are blocked for some
+    users' browsers or networks (HTTP 403), and browsers open them in a
+    player instead of downloading. This route fetches the file on the
+    server and hands it to the user as an attachment, so the download
+    always works. Only video.twimg.com video links are allowed — this is
+    not an open proxy. The file is streamed in chunks and never saved to
+    disk.
     """
-    cdn_url = (request.args.get("url") or "").strip()
-    label = (request.args.get("label") or "video").strip()
+    if not _check_rate_limit("get", 30, 60):
+        return jsonify({"error": "Too many requests. Please wait a minute and try again."}), 429
+
+    token = (request.args.get("token") or "").strip()
+    cdn_url, label = lookup_download_token(token)
+    if cdn_url == "expired":
+        return jsonify({"error": "This download link has expired. Please fetch the video again."}), 410
+    if not cdn_url:
+        return jsonify({"error": "Invalid download link. Please fetch the video again."}), 400
 
     try:
         parsed = urlparse(cdn_url)

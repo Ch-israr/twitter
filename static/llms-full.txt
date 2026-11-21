@@ -94,7 +94,7 @@
 - No account and no sign-up. TwitterDown does not ask for your name, email, or any personal details.
 - No X login is needed. You never enter your X password anywhere on this site.
 - TwitterDown does not host videos. Videos are fetched from X's servers and passed through to your device; the download buttons serve the file to you directly.
-- The site uses Google Tag Manager and Google AdSense (advertising), as described in its Privacy Policy.
+- The site uses Google Tag Manager (analytics), as described in its Privacy Policy.
 - For the full details, see the [Privacy Policy](https://twitterdown.app/privacy) and the [Terms of Service](https://twitterdown.app/terms).
 
 ## Frequently asked questions

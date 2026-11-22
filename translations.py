@@ -15,7 +15,7 @@ TRANSLATIONS = {
     "en": {
         "name": "English",
         "locale": "en_US",
-        "title": "TwitterDown — Twitter Video & Photo Downloader | Download X Videos and Photos Free",
+        "title": "TwitterDown — Twitter Video & Photo Downloader",
         "description": "Download Twitter videos and photos online free with TwitterDown. Save Twitter videos, GIFs and photos from X in HD and 4K as MP4 and JPG on iPhone — fast, free, no watermark, no sign-up.",
         "nav_about": "About",
         "nav_how": "How it works",
@@ -116,7 +116,7 @@ TRANSLATIONS = {
     "es": {
         "name": "Español",
         "locale": "es_ES",
-        "title": "TwitterDown — Descargador de videos y fotos de Twitter | Descarga videos y fotos de X gratis",
+        "title": "TwitterDown — Descargador de videos y fotos de Twitter",
         "description": "Descarga videos y fotos de Twitter gratis en línea con TwitterDown. Guarda videos, GIFs y fotos de X en HD y 4K como MP4 y JPG en iPhone — rápido, gratis, sin marca de agua, sin registro.",
         "nav_about": "Acerca de",
         "nav_how": "Cómo funciona",
@@ -318,7 +318,7 @@ TRANSLATIONS = {
     "fr": {
         "name": "Français",
         "locale": "fr_FR",
-        "title": "TwitterDown — Téléchargeur de vidéos et photos Twitter | Télécharger des vidéos et photos X gratuitement",
+        "title": "TwitterDown — Téléchargeur de vidéos et photos Twitter",
         "description": "Téléchargez des vidéos et photos Twitter gratuitement en ligne avec TwitterDown. Enregistrez vidéos, GIFs et photos X en HD et 4K en MP4 et JPG sur iPhone — rapide, gratuit, sans filigrane, sans inscription.",
         "nav_about": "À propos",
         "nav_how": "Comment ça marche",
@@ -419,7 +419,7 @@ TRANSLATIONS = {
     "tr": {
         "name": "Türkçe",
         "locale": "tr_TR",
-        "title": "TwitterDown — Twitter Video ve Fotoğraf İndirici | X Video ve Fotoğraflarını Ücretsiz İndir",
+        "title": "TwitterDown — Twitter Video ve Fotoğraf İndirici",
         "description": "TwitterDown ile Twitter video ve fotoğraflarını çevrimiçi ücretsiz indirin. X videolarını, GIF'leri ve fotoğraflarını HD ve 4K MP4 ve JPG olarak iPhone'a kaydedin — hızlı, ücretsiz, filigransız, kayıtsız.",
         "nav_about": "Hakkında",
         "nav_how": "Nasıl çalışır",
@@ -520,7 +520,7 @@ TRANSLATIONS = {
     "id": {
         "name": "Bahasa Indonesia",
         "locale": "id_ID",
-        "title": "TwitterDown — Pengunduh Video dan Foto Twitter | Download Video dan Foto X Gratis",
+        "title": "TwitterDown — Pengunduh Video dan Foto Twitter",
         "description": "Download video dan foto Twitter gratis online dengan TwitterDown. Simpan video, GIF, dan foto dari X dalam HD dan 4K sebagai MP4 dan JPG di iPhone — cepat, gratis, tanpa watermark, tanpa pendaftaran.",
         "nav_about": "Tentang",
         "nav_how": "Cara Kerja",

@@ -32,8 +32,11 @@ ALLOWED_HOSTS = {
 
 def is_x_url(url):
     try:
-        host = (urlparse(url).hostname or "").lower()
+        parsed = urlparse(url)
+        host = (parsed.hostname or "").lower()
     except Exception:
+        return False
+    if parsed.scheme not in ("http", "https"):
         return False
     return host in ALLOWED_HOSTS or host.endswith(".x.com") or host.endswith(".twitter.com")
 

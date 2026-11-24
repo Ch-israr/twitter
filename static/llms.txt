@@ -43,11 +43,15 @@
 - [Features](https://twitterdown.app/#features)
 - [FAQ](https://twitterdown.app/faq)
 - [About](https://twitterdown.app/about)
+- [How to download Twitter videos on iPhone](https://twitterdown.app/how-to-download-twitter-videos-iphone)
+- [How to download Twitter videos on Android](https://twitterdown.app/how-to-download-twitter-videos-android)
+- [How to download Twitter videos on PC](https://twitterdown.app/how-to-download-twitter-videos-pc)
+- [How to download Twitter GIFs](https://twitterdown.app/how-to-download-twitter-gifs)
 - [Privacy Policy](https://twitterdown.app/privacy)
 - [Terms of Service](https://twitterdown.app/terms)
 - [Contact](https://twitterdown.app/contact)
 
-About, Contact and FAQ are also available in every language — for example /es/about/, /zh/faq/ and /id/contact/. Privacy and Terms have a page in every language too (for example /es/privacy/ and /zh/terms/); their legal text stays in English while the navigation around it uses the selected language. Navigation keeps the selected language on every page.
+About, Contact and FAQ are also available in every language — for example /es/about/, /zh/faq/ and /id/contact/. Privacy and Terms have a page in every language too (for example /es/privacy/ and /zh/terms/); their legal text stays in English while the navigation around it uses the selected language. The four how-to guides are in English too, with a page in every language (for example /es/how-to-download-twitter-videos-iphone/); their guide text stays in English while the navigation around it uses the selected language. Navigation keeps the selected language on every page.
 
 ## Languages
 

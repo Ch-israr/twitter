@@ -378,7 +378,17 @@ def page_not_found(e):
 # back to the homepage. Pages with no per-language URL at all (e.g. the
 # 404 page) fall back to the language homepage.
 TRANSLATED_PAGES = {"home", "about", "contact", "faq"}
-ROUTED_PAGES = TRANSLATED_PAGES | {"privacy", "terms"}
+# How-to guides: English text only, like Privacy and Terms, but with a
+# URL in every language so the language switcher keeps the user on the
+# same guide with translated navigation instead of dropping them back
+# to the homepage.
+HOWTO_PAGES = {
+    "how-to-download-twitter-videos-iphone",
+    "how-to-download-twitter-videos-android",
+    "how-to-download-twitter-videos-pc",
+    "how-to-download-twitter-gifs",
+}
+ROUTED_PAGES = TRANSLATED_PAGES | {"privacy", "terms"} | HOWTO_PAGES
 
 
 def lang_url(page, code):
@@ -533,6 +543,60 @@ def contact_lang(lang):
 @app.route("/<any(es, zh, fr, tr, id):lang>/faq/")
 def faq_lang(lang):
     return render_info("faq.html", lang, "faq")
+
+
+@app.route("/how-to-download-twitter-videos-iphone")
+def howto_iphone():
+    return render_info(
+        "iphone.html", "en", "how-to-download-twitter-videos-iphone")
+
+
+@app.route("/<any(es, zh, fr, tr, id):lang>/how-to-download-twitter-videos-iphone/")
+def howto_iphone_lang(lang):
+    # Guide text stays English; header, footer and navigation render in
+    # the selected language so switching languages keeps the user here.
+    return render_info(
+        "iphone.html", lang, "how-to-download-twitter-videos-iphone")
+
+
+@app.route("/how-to-download-twitter-videos-android")
+def howto_android():
+    return render_info(
+        "android.html", "en", "how-to-download-twitter-videos-android")
+
+
+@app.route("/<any(es, zh, fr, tr, id):lang>/how-to-download-twitter-videos-android/")
+def howto_android_lang(lang):
+    # Guide text stays English; header, footer and navigation render in
+    # the selected language so switching languages keeps the user here.
+    return render_info(
+        "android.html", lang, "how-to-download-twitter-videos-android")
+
+
+@app.route("/how-to-download-twitter-videos-pc")
+def howto_pc():
+    return render_info(
+        "pc.html", "en", "how-to-download-twitter-videos-pc")
+
+
+@app.route("/<any(es, zh, fr, tr, id):lang>/how-to-download-twitter-videos-pc/")
+def howto_pc_lang(lang):
+    # Guide text stays English; header, footer and navigation render in
+    # the selected language so switching languages keeps the user here.
+    return render_info(
+        "pc.html", lang, "how-to-download-twitter-videos-pc")
+
+
+@app.route("/how-to-download-twitter-gifs")
+def howto_gifs():
+    return render_info("gifs.html", "en", "how-to-download-twitter-gifs")
+
+
+@app.route("/<any(es, zh, fr, tr, id):lang>/how-to-download-twitter-gifs/")
+def howto_gifs_lang(lang):
+    # Guide text stays English; header, footer and navigation render in
+    # the selected language so switching languages keeps the user here.
+    return render_info("gifs.html", lang, "how-to-download-twitter-gifs")
 
 
 @app.route("/")

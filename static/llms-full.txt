@@ -65,15 +65,21 @@
 2. Paste the link to the post, tap Download, then pick a quality for a video — or tap the photo you want — and save the file.
 3. The file goes to Downloads in the Files app. No app to install and no account needed.
 
+Full guide: https://twitterdown.app/how-to-download-twitter-videos-iphone
+
 ### On Android
 
 1. Open TwitterDown in your phone's browser.
 2. Paste the link, tap Download, pick a quality for a video — or tap the photo you want — and save the file to your Downloads folder.
 
+Full guide: https://twitterdown.app/how-to-download-twitter-videos-android
+
 ### On PC
 
 1. Open TwitterDown in your browser.
 2. Copy the link from the X post and paste it into the box (Ctrl+V), tap Download, pick a quality for a video — or tap the photo you want — and save the file.
+
+Full guide: https://twitterdown.app/how-to-download-twitter-videos-pc
 
 ## Supported content
 
@@ -115,6 +121,8 @@ You get up to five qualities to choose from — for example 480p, 720p, 1080p an
 ### Can I download GIFs too?
 
 Yes. On X, GIFs are short videos, so they download as MP4 just like videos.
+
+Full guide: https://twitterdown.app/how-to-download-twitter-gifs
 
 ### Can I download photos from X?
 
